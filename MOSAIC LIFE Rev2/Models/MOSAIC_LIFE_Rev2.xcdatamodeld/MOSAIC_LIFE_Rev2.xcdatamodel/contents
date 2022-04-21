@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Shop" representedClassName="Shop" syncable="YES">
+        <attribute name="category" attributeType="String" defaultValueString="デフォルト"/>
+        <attribute name="name" attributeType="String" defaultValueString="新規アイテム"/>
+        <attribute name="pt" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="category" attributeType="String" defaultValueString="デフォルト"/>
+        <attribute name="name" attributeType="String" defaultValueString="新規タスク"/>
+        <attribute name="pt" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Task" positionX="-45" positionY="0" width="128" height="74"/>
+        <element name="Shop" positionX="-18" positionY="27" width="128" height="74"/>
+    </elements>
+</model>
