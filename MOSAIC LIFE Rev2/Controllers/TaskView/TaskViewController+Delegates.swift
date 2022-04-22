@@ -150,6 +150,10 @@ extension TaskViewController : UIPickerViewDelegate, UIPickerViewDataSource {
         return toolbar
     }
     
+    @objc public func decideCategory(_ sender: Any) {
+        editingTextField.endEditing(true)
+    }
+    
 }
 
 extension TaskViewController : NSFetchedResultsControllerDelegate {

@@ -55,7 +55,14 @@
                         <viewLayoutGuide key="safeArea" id="ftZ-hd-koQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Shop" id="8hs-0v-tCE"/>
+                    <navigationItem key="navigationItem" title="Shop" id="8hs-0v-tCE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1df-x3-dIh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="SDe-Ji-EKg" id="nEA-Zb-RYa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIT-FG-tbu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
