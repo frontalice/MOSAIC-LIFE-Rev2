@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A848E6ED28114DC2003FBE04 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848E6EC28114DC2003FBE04 /* ShopView.swift */; };
-		A848E6EF28114DCD003FBE04 /* ShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A848E6EE28114DCD003FBE04 /* ShopView.xib */; };
 		A848E6F62811535B003FBE04 /* CommonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848E6F52811535B003FBE04 /* CommonListViewController.swift */; };
 		A8AC4C992811629500E162A2 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4C982811629500E162A2 /* ModelEnum.swift */; };
 		A8AC4C9B281230C900E162A2 /* CommonListViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4C9A281230C900E162A2 /* CommonListViewController+Delegates.swift */; };
+		A8AC4CAF2812339500E162A2 /* PtLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CA82812339400E162A2 /* PtLabel.swift */; };
+		A8AC4CB02812339500E162A2 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CA92812339400E162A2 /* MainView.xib */; };
+		A8AC4CB12812339500E162A2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CAA2812339400E162A2 /* MainView.swift */; };
+		A8AC4CB22812339500E162A2 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CAC2812339400E162A2 /* TaskView.swift */; };
+		A8AC4CB32812339500E162A2 /* TaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CAD2812339500E162A2 /* TaskView.xib */; };
+		A8AC4CC62812347C00E162A2 /* XibLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CC52812347C00E162A2 /* XibLoadView.swift */; };
 		A8BF5E5C280FAE21008C3814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E5B280FAE21008C3814 /* AppDelegate.swift */; };
 		A8BF5E5E280FAE21008C3814 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E5D280FAE21008C3814 /* SceneDelegate.swift */; };
 		A8BF5E63280FAE21008C3814 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E61280FAE21008C3814 /* Main.storyboard */; };
@@ -21,12 +25,6 @@
 		A8BF5E8A280FAF12008C3814 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E86280FAF12008C3814 /* TaskViewController.swift */; };
 		A8BF5E8B280FAF12008C3814 /* TaskViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E87280FAF12008C3814 /* TaskViewController+Delegates.swift */; };
 		A8BF5E8C280FAF12008C3814 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E89280FAF12008C3814 /* MainViewController.swift */; };
-		A8BF5E99280FAF5A008C3814 /* XibLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E90280FAF5A008C3814 /* XibLoadView.swift */; };
-		A8BF5E9A280FAF5A008C3814 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E92280FAF5A008C3814 /* TaskView.swift */; };
-		A8BF5E9B280FAF5A008C3814 /* TaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E93280FAF5A008C3814 /* TaskView.xib */; };
-		A8BF5E9C280FAF5A008C3814 /* PtLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E96280FAF5A008C3814 /* PtLabel.swift */; };
-		A8BF5E9D280FAF5A008C3814 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E97280FAF5A008C3814 /* MainView.xib */; };
-		A8BF5E9E280FAF5A008C3814 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E98280FAF5A008C3814 /* MainView.swift */; };
 		A8BF5EA3280FB8E7008C3814 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E9F280FB8E7008C3814 /* Task+CoreDataClass.swift */; };
 		A8BF5EA4280FB8E7008C3814 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EA0280FB8E7008C3814 /* Task+CoreDataProperties.swift */; };
 		A8BF5EA5280FB8E7008C3814 /* Shop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EA1280FB8E7008C3814 /* Shop+CoreDataClass.swift */; };
@@ -36,11 +34,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A848E6EC28114DC2003FBE04 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
-		A848E6EE28114DCD003FBE04 /* ShopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopView.xib; sourceTree = "<group>"; };
 		A848E6F52811535B003FBE04 /* CommonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListViewController.swift; sourceTree = "<group>"; };
 		A8AC4C982811629500E162A2 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		A8AC4C9A281230C900E162A2 /* CommonListViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommonListViewController+Delegates.swift"; sourceTree = "<group>"; };
+		A8AC4CA82812339400E162A2 /* PtLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtLabel.swift; sourceTree = "<group>"; };
+		A8AC4CA92812339400E162A2 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		A8AC4CAA2812339400E162A2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A8AC4CAC2812339400E162A2 /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		A8AC4CAD2812339500E162A2 /* TaskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskView.xib; sourceTree = "<group>"; };
+		A8AC4CC52812347C00E162A2 /* XibLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibLoadView.swift; sourceTree = "<group>"; };
 		A8BF5E58280FAE21008C3814 /* MOSAIC LIFE Rev2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MOSAIC LIFE Rev2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BF5E5B280FAE21008C3814 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BF5E5D280FAE21008C3814 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,12 +54,6 @@
 		A8BF5E86280FAF12008C3814 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		A8BF5E87280FAF12008C3814 /* TaskViewController+Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskViewController+Delegates.swift"; sourceTree = "<group>"; };
 		A8BF5E89280FAF12008C3814 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A8BF5E90280FAF5A008C3814 /* XibLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibLoadView.swift; sourceTree = "<group>"; };
-		A8BF5E92280FAF5A008C3814 /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
-		A8BF5E93280FAF5A008C3814 /* TaskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskView.xib; sourceTree = "<group>"; };
-		A8BF5E96280FAF5A008C3814 /* PtLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtLabel.swift; sourceTree = "<group>"; };
-		A8BF5E97280FAF5A008C3814 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
-		A8BF5E98280FAF5A008C3814 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A8BF5E9F280FB8E7008C3814 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A8BF5EA0280FB8E7008C3814 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8BF5EA1280FB8E7008C3814 /* Shop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -84,14 +80,35 @@
 			path = ShopView;
 			sourceTree = "<group>";
 		};
-		A868C62428114CC100BFF454 /* Shop */ = {
+		A8AC4CA72812339400E162A2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				A848E6EC28114DC2003FBE04 /* ShopView.swift */,
-				A848E6EE28114DCD003FBE04 /* ShopView.xib */,
+				A8AC4CA82812339400E162A2 /* PtLabel.swift */,
+				A8AC4CA92812339400E162A2 /* MainView.xib */,
+				A8AC4CAA2812339400E162A2 /* MainView.swift */,
 			);
-			path = Shop;
-			sourceTree = "<group>";
+			name = Main;
+			path = "MOSAIC LIFE Rev2/Views/Main";
+			sourceTree = SOURCE_ROOT;
+		};
+		A8AC4CAB2812339400E162A2 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				A8AC4CAC2812339400E162A2 /* TaskView.swift */,
+				A8AC4CAD2812339500E162A2 /* TaskView.xib */,
+			);
+			name = Task;
+			path = "MOSAIC LIFE Rev2/Views/Task";
+			sourceTree = SOURCE_ROOT;
+		};
+		A8AC4CC42812347C00E162A2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A8AC4CC52812347C00E162A2 /* XibLoadView.swift */,
+			);
+			name = Common;
+			path = "MOSAIC LIFE Rev2/Views/Common";
+			sourceTree = SOURCE_ROOT;
 		};
 		A8BF5E4F280FAE21008C3814 = {
 			isa = PBXGroup;
@@ -156,40 +173,12 @@
 		A8BF5E8E280FAF5A008C3814 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A8BF5E95280FAF5A008C3814 /* Main */,
-				A8BF5E91280FAF5A008C3814 /* Task */,
-				A868C62428114CC100BFF454 /* Shop */,
-				A8BF5E8F280FAF5A008C3814 /* Common */,
+				A8AC4CA72812339400E162A2 /* Main */,
+				A8AC4CAB2812339400E162A2 /* Task */,
+				A8AC4CC42812347C00E162A2 /* Common */,
 			);
 			name = Views;
 			path = "../../MOSAIC LIFE Rev./Views";
-			sourceTree = "<group>";
-		};
-		A8BF5E8F280FAF5A008C3814 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A8BF5E90280FAF5A008C3814 /* XibLoadView.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		A8BF5E91280FAF5A008C3814 /* Task */ = {
-			isa = PBXGroup;
-			children = (
-				A8BF5E92280FAF5A008C3814 /* TaskView.swift */,
-				A8BF5E93280FAF5A008C3814 /* TaskView.xib */,
-			);
-			path = Task;
-			sourceTree = "<group>";
-		};
-		A8BF5E95280FAF5A008C3814 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				A8BF5E96280FAF5A008C3814 /* PtLabel.swift */,
-				A8BF5E97280FAF5A008C3814 /* MainView.xib */,
-				A8BF5E98280FAF5A008C3814 /* MainView.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		A8BF5EA7280FB907008C3814 /* Models */ = {
@@ -290,12 +279,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A848E6EF28114DCD003FBE04 /* ShopView.xib in Resources */,
 				A8BF5E6B280FAE28008C3814 /* LaunchScreen.storyboard in Resources */,
 				A8BF5E68280FAE28008C3814 /* Assets.xcassets in Resources */,
 				A8BF5E63280FAE21008C3814 /* Main.storyboard in Resources */,
-				A8BF5E9B280FAF5A008C3814 /* TaskView.xib in Resources */,
-				A8BF5E9D280FAF5A008C3814 /* MainView.xib in Resources */,
+				A8AC4CB02812339500E162A2 /* MainView.xib in Resources */,
+				A8AC4CB32812339500E162A2 /* TaskView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,16 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8BF5E9A280FAF5A008C3814 /* TaskView.swift in Sources */,
 				A8AC4C992811629500E162A2 /* ModelEnum.swift in Sources */,
 				A8BF5E8C280FAF12008C3814 /* MainViewController.swift in Sources */,
-				A8BF5E99280FAF5A008C3814 /* XibLoadView.swift in Sources */,
-				A8BF5E9C280FAF5A008C3814 /* PtLabel.swift in Sources */,
 				A8BF5E5C280FAE21008C3814 /* AppDelegate.swift in Sources */,
+				A8AC4CB22812339500E162A2 /* TaskView.swift in Sources */,
 				A8BF5E8A280FAF12008C3814 /* TaskViewController.swift in Sources */,
-				A848E6ED28114DC2003FBE04 /* ShopView.swift in Sources */,
 				A8AC4C9B281230C900E162A2 /* CommonListViewController+Delegates.swift in Sources */,
-				A8BF5E9E280FAF5A008C3814 /* MainView.swift in Sources */,
+				A8AC4CB12812339500E162A2 /* MainView.swift in Sources */,
 				A8BF5E66280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodeld in Sources */,
 				A8BF5EA5280FB8E7008C3814 /* Shop+CoreDataClass.swift in Sources */,
 				A8BF5EA3280FB8E7008C3814 /* Task+CoreDataClass.swift in Sources */,
@@ -325,7 +310,9 @@
 				A8BF5EA4280FB8E7008C3814 /* Task+CoreDataProperties.swift in Sources */,
 				A848E6F62811535B003FBE04 /* CommonListViewController.swift in Sources */,
 				A8BF5E8B280FAF12008C3814 /* TaskViewController+Delegates.swift in Sources */,
+				A8AC4CC62812347C00E162A2 /* XibLoadView.swift in Sources */,
 				A8BF5EAC280FB989008C3814 /* UDDataStore.swift in Sources */,
+				A8AC4CAF2812339500E162A2 /* PtLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

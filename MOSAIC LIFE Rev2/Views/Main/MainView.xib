@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView" customModule="Views" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView" customModule="MOSAIC_LIFE_Rev2" customModuleProvider="target">
             <connections>
                 <outlet property="activityLog" destination="Z21-0z-OyJ" id="sYS-qP-jLz"/>
                 <outlet property="pointLabelSet" destination="MNY-vD-hCt" id="ALZ-aQ-zhG"/>
@@ -28,7 +28,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNY-vD-hCt" userLabel="PointLabelSet">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="86"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFL-8k-EoC" customClass="PtLabel" customModule="Views" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFL-8k-EoC" customClass="PtLabel" customModule="MOSAIC_LIFE_Rev2" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="330.5" height="86"/>
                                     <color key="backgroundColor" red="1" green="0.82416447199999998" blue="0.64218222690000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="60"/>

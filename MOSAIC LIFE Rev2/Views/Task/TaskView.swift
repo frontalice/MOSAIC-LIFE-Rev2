@@ -11,6 +11,9 @@ public final class TaskView: XibLoadView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        if #available(iOS 15, *) {
+            taskListView.sectionHeaderTopPadding = 0.0
+        }
     }
     
     public required init(coder aDecoder: NSCoder) {
