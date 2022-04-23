@@ -9,12 +9,14 @@ import Foundation
 
 import UIKit
 
-public final class ShopView: XibLoadView {
+public final class ShopView: CommonListView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        listTable = shopListView
+        pointLabel = ptLabel
         if #available(iOS 15, *) {
-            shopListView.sectionHeaderTopPadding = 0.0
+            listTable.sectionHeaderTopPadding = 0.0
         }
     }
     

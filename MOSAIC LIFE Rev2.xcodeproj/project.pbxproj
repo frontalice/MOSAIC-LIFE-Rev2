@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A848E6F62811535B003FBE04 /* CommonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848E6F52811535B003FBE04 /* CommonListViewController.swift */; };
 		A8AC4C992811629500E162A2 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4C982811629500E162A2 /* ModelEnum.swift */; };
-		A8AC4C9B281230C900E162A2 /* CommonListViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4C9A281230C900E162A2 /* CommonListViewController+Delegates.swift */; };
 		A8AC4CAF2812339500E162A2 /* PtLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CA82812339400E162A2 /* PtLabel.swift */; };
 		A8AC4CB02812339500E162A2 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CA92812339400E162A2 /* MainView.xib */; };
 		A8AC4CB12812339500E162A2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CAA2812339400E162A2 /* MainView.swift */; };
@@ -18,6 +17,10 @@
 		A8AC4CC62812347C00E162A2 /* XibLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CC52812347C00E162A2 /* XibLoadView.swift */; };
 		A8AC4CCA2812353100E162A2 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CC82812353100E162A2 /* ShopView.swift */; };
 		A8AC4CCB2812353100E162A2 /* ShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CC92812353100E162A2 /* ShopView.xib */; };
+		A8AC4CCF2812690200E162A2 /* CommonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CCE2812690200E162A2 /* CommonListView.swift */; };
+		A8AC4CD12812698100E162A2 /* CommonListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CD02812698100E162A2 /* CommonListView.xib */; };
+		A8AC4CD32812A0C000E162A2 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */; };
+		A8AC4CD52812A2D500E162A2 /* ShopViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD42812A2D500E162A2 /* ShopViewController+Delegates.swift */; };
 		A8BF5E5C280FAE21008C3814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E5B280FAE21008C3814 /* AppDelegate.swift */; };
 		A8BF5E5E280FAE21008C3814 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E5D280FAE21008C3814 /* SceneDelegate.swift */; };
 		A8BF5E63280FAE21008C3814 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E61280FAE21008C3814 /* Main.storyboard */; };
@@ -38,7 +41,6 @@
 /* Begin PBXFileReference section */
 		A848E6F52811535B003FBE04 /* CommonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListViewController.swift; sourceTree = "<group>"; };
 		A8AC4C982811629500E162A2 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
-		A8AC4C9A281230C900E162A2 /* CommonListViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommonListViewController+Delegates.swift"; sourceTree = "<group>"; };
 		A8AC4CA82812339400E162A2 /* PtLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtLabel.swift; sourceTree = "<group>"; };
 		A8AC4CA92812339400E162A2 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		A8AC4CAA2812339400E162A2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		A8AC4CC52812347C00E162A2 /* XibLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibLoadView.swift; sourceTree = "<group>"; };
 		A8AC4CC82812353100E162A2 /* ShopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		A8AC4CC92812353100E162A2 /* ShopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopView.xib; sourceTree = "<group>"; };
+		A8AC4CCE2812690200E162A2 /* CommonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListView.swift; sourceTree = "<group>"; };
+		A8AC4CD02812698100E162A2 /* CommonListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonListView.xib; sourceTree = "<group>"; };
+		A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		A8AC4CD42812A2D500E162A2 /* ShopViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopViewController+Delegates.swift"; sourceTree = "<group>"; };
 		A8BF5E58280FAE21008C3814 /* MOSAIC LIFE Rev2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MOSAIC LIFE Rev2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BF5E5B280FAE21008C3814 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BF5E5D280FAE21008C3814 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +86,8 @@
 		A848E6F028114ED0003FBE04 /* ShopView */ = {
 			isa = PBXGroup;
 			children = (
+				A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */,
+				A8AC4CD42812A2D500E162A2 /* ShopViewController+Delegates.swift */,
 			);
 			path = ShopView;
 			sourceTree = "<group>";
@@ -88,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				A8AC4CA82812339400E162A2 /* PtLabel.swift */,
-				A8AC4CA92812339400E162A2 /* MainView.xib */,
 				A8AC4CAA2812339400E162A2 /* MainView.swift */,
+				A8AC4CA92812339400E162A2 /* MainView.xib */,
 			);
 			name = Main;
 			path = "MOSAIC LIFE Rev2/Views/Main";
@@ -109,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				A8AC4CC52812347C00E162A2 /* XibLoadView.swift */,
+				A8AC4CCE2812690200E162A2 /* CommonListView.swift */,
+				A8AC4CD02812698100E162A2 /* CommonListView.xib */,
 			);
 			name = Common;
 			path = "MOSAIC LIFE Rev2/Views/Common";
@@ -231,7 +241,6 @@
 			children = (
 				A848E6F52811535B003FBE04 /* CommonListViewController.swift */,
 				A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */,
-				A8AC4C9A281230C900E162A2 /* CommonListViewController+Delegates.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 				A8AC4CCB2812353100E162A2 /* ShopView.xib in Resources */,
 				A8BF5E6B280FAE28008C3814 /* LaunchScreen.storyboard in Resources */,
 				A8BF5E68280FAE28008C3814 /* Assets.xcassets in Resources */,
+				A8AC4CD12812698100E162A2 /* CommonListView.xib in Resources */,
 				A8BF5E63280FAE21008C3814 /* Main.storyboard in Resources */,
 				A8AC4CB02812339500E162A2 /* MainView.xib in Resources */,
 				A8AC4CB32812339500E162A2 /* TaskView.xib in Resources */,
@@ -310,12 +320,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8AC4CCF2812690200E162A2 /* CommonListView.swift in Sources */,
 				A8AC4C992811629500E162A2 /* ModelEnum.swift in Sources */,
 				A8BF5E8C280FAF12008C3814 /* MainViewController.swift in Sources */,
 				A8BF5E5C280FAE21008C3814 /* AppDelegate.swift in Sources */,
 				A8AC4CB22812339500E162A2 /* TaskView.swift in Sources */,
+				A8AC4CD32812A0C000E162A2 /* ShopViewController.swift in Sources */,
 				A8BF5E8A280FAF12008C3814 /* TaskViewController.swift in Sources */,
-				A8AC4C9B281230C900E162A2 /* CommonListViewController+Delegates.swift in Sources */,
+				A8AC4CD52812A2D500E162A2 /* ShopViewController+Delegates.swift in Sources */,
 				A8AC4CB12812339500E162A2 /* MainView.swift in Sources */,
 				A8BF5E66280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodeld in Sources */,
 				A8BF5EA5280FB8E7008C3814 /* Shop+CoreDataClass.swift in Sources */,

@@ -1,29 +1,32 @@
 //
-//  TaskListViewController.swift
-//  MOSAIC LIFE Rev.
+//  ShopViewController+Delegates.swift
+//  MOSAIC LIFE Rev2
 //
-//  Created by Toshiki Hanakawa on 2022/04/19.
+//  Created by Toshiki Hanakawa on 2022/04/22.
 //
 
 import UIKit
 import CoreData
 
-extension TaskViewController : UITableViewDelegate {
+extension ShopViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let sourceName : String = fetchedResultsController.object(at: indexPath).name ?? ""
         let sourcePt : Int32 = fetchedResultsController.object(at: indexPath).pt
         
         if !self.listView.listTable.isEditing {
-            currentPt += Int(sourcePt) * currentRate
+            if currentPt < Int(sourcePt) * currentRate {
+                return
+            }
+            currentPt -= Int(sourcePt) * currentRate
             listView.pointLabel.text = String("\(currentPt) pt")
             tableView.deselectRow(at: indexPath, animated: false)
             userDefaults.set(.currentPt, currentPt)
         } else {
-            let alertController = getAlertController(title: "Taskの編集", message: "" , fields: 2, placeHolder: ["Task Name","Point"])
+            let alertController = getAlertController(title: "Itemの編集", message: "" , fields: 2, placeHolder: ["Item Name","Point"])
             alertController.textFields![0].text = sourceName
             alertController.textFields![1].text = String(sourcePt)
-            let alertAction = UIAlertAction(title: "OK", style: .default, handler: updateRecordHandler(alertController: alertController, model: .task, context: context, indexPath: indexPath))
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: updateRecordHandler(alertController: alertController, model: .shop, context: context, indexPath: indexPath))
             
             alertController.addAction(alertAction)
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -57,7 +60,7 @@ extension TaskViewController : UITableViewDelegate {
     }
 }
 
-extension TaskViewController : UITableViewDataSource {
+extension ShopViewController : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
@@ -102,7 +105,7 @@ extension TaskViewController : UITableViewDataSource {
     }
 }
 
-extension TaskViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+extension ShopViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if let count = fetchedResultsController.sections?.count {
@@ -162,11 +165,11 @@ extension TaskViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
 }
 
-extension TaskViewController : NSFetchedResultsControllerDelegate {
-    func createFetchedResultsController() -> NSFetchedResultsController<Task> {
-        let fetchRequest = Task.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Task.name, ascending: true)]
-        let frc = NSFetchedResultsController<Task>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "category", cacheName: nil)
+extension ShopViewController : NSFetchedResultsControllerDelegate {
+    func createFetchedResultsController() -> NSFetchedResultsController<Shop> {
+        let fetchRequest = Shop.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Shop.name, ascending: true)]
+        let frc = NSFetchedResultsController<Shop>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "category", cacheName: nil)
         frc.delegate = self
         return frc
     }

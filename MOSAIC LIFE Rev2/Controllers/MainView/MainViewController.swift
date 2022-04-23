@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         mainView.taskButton.addTarget(self, action: #selector(goToTask(_:)), for: .touchUpInside)
+        mainView.shopButton.addTarget(self, action: #selector(goToShop(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,16 +35,9 @@ class MainViewController: UIViewController {
         self.performSegue(withIdentifier: "toTask", sender: self)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        switch segue.identifier {
-//        case "toTask":
-//
-//        case "toShop":
-//
-//        default:
-//            return
-//        }
-//    }
+    @objc private func goToShop(_ sender: Any) {
+        self.performSegue(withIdentifier: "toShop", sender: self)
+    }
     
 }
 

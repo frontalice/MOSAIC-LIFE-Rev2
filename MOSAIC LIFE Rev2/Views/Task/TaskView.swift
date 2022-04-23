@@ -7,12 +7,15 @@
 
 import UIKit
 
-public final class TaskView: XibLoadView {
+public final class TaskView: CommonListView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        listTable = taskListView
+        pointLabel = ptLabel
+        rateSegmentControl = modeControl
         if #available(iOS 15, *) {
-            taskListView.sectionHeaderTopPadding = 0.0
+            listTable.sectionHeaderTopPadding = 0.0
         }
     }
     

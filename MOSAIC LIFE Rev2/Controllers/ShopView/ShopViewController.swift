@@ -1,31 +1,31 @@
 //
-//  TaskViewController.swift
-//  MOSAIC LIFE Rev.
+//  ShopViewController.swift
+//  MOSAIC LIFE Rev2
 //
-//  Created by Toshiki Hanakawa on 2022/04/19.
+//  Created by Toshiki Hanakawa on 2022/04/22.
 //
 
 import UIKit
 import CoreData
 
-class TaskViewController : CommonListViewController {
+class ShopViewController : CommonListViewController {
     
     // MARK: - View Properties
     
-    let modeColor : UIColor = .systemTeal
+    let modeColor : UIColor = .systemGreen
     
     // MARK: - Model Properties
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Task> = createFetchedResultsController()
+    lazy var fetchedResultsController: NSFetchedResultsController<Shop> = createFetchedResultsController()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        listView = TaskView()
+        listView = ShopView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        listView = TaskView()
+        listView = ShopView()
     }
     
     // MARK: - LifeCycle Functions
@@ -40,7 +40,7 @@ class TaskViewController : CommonListViewController {
         
         // Model
         currentPt = userDefaults.fetchInt(.currentPt)
-        currentRate = listView.rateSegmentControl.selectedSegmentIndex+1
+        currentRate = 1
         
         // View - value
         listView.pointLabel.text = String("\(currentPt) pt")
@@ -54,7 +54,7 @@ class TaskViewController : CommonListViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
-        let alertController = getAlertController(title: "Taskの追加", message: "Task名と獲得pt、カテゴリを入力", fields: 3, placeHolder: ["Task Name", "Points", "Section"])
+        let alertController = getAlertController(title: "Itemの追加", message: "Item名と消費pt、カテゴリを入力", fields: 3, placeHolder: ["Item Name", "Points", "Section"])
         
         let categorySelectPickerView = setPickerView()
         let toolbar = makeToolBarOnPickerView()
@@ -64,7 +64,7 @@ class TaskViewController : CommonListViewController {
         alertController.textFields![2].inputView = categorySelectPickerView
         alertController.textFields![2].text = categoryOptions[0]
         
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: insertRecordHandler(alertController: alertController, model: .task, context: context))
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: insertRecordHandler(alertController: alertController, model: .shop, context: context))
         
         alertController.addAction(alertAction)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -109,7 +109,7 @@ class TaskViewController : CommonListViewController {
     func createCategory(name: String, pt: Int) {
         let alertController = getAlertController(title: "カテゴリを追加", message: "カテゴリ名を入力", fields: 1, placeHolder: ["カテゴリ名"])
         
-        let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: insertCategoryHandler(alertController: alertController, model: .task, context: context, name: name, pt: pt))
+        let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: insertCategoryHandler(alertController: alertController, model: .shop, context: context, name: name, pt: pt))
         
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
