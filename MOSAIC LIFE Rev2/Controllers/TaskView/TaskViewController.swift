@@ -37,10 +37,14 @@ class TaskViewController : CommonListViewController {
         listView.listTable.delegate = self
         listView.listTable.dataSource = self
         listView.listTable.allowsSelectionDuringEditing = true
+        listView.rateSegmentControl.selectedSegmentIndex = userDefaults.fetchInt(key: .taskRate)-1
+        
+        // View - monitor
+        listView.rateSegmentControl.addTarget(self, action: #selector(whenRateChanged(_:)), for: .valueChanged)
         
         // Model
-        currentPt = userDefaults.fetchInt(.currentPt)
-        currentRate = listView.rateSegmentControl.selectedSegmentIndex+1
+        currentPt = userDefaults.fetchInt(key: .currentPt)
+        currentRate = userDefaults.fetchInt(key: .taskRate)
         
         // View - value
         listView.pointLabel.text = String("\(currentPt) pt")
@@ -69,6 +73,12 @@ class TaskViewController : CommonListViewController {
         alertController.addAction(alertAction)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc private func whenRateChanged(_ sender: Any) {
+        listView.listTable.reloadData()
+        currentRate = listView.rateSegmentControl.selectedSegmentIndex+1
+        userDefaults.set(.taskRate, currentRate)
     }
     
     // MARK: - Model Control Functions

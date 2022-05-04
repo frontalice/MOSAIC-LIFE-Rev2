@@ -11,6 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView" customModule="MOSAIC_LIFE_Rev2" customModuleProvider="target">
             <connections>
                 <outlet property="activityLog" destination="Z21-0z-OyJ" id="sYS-qP-jLz"/>
+                <outlet property="addingSptLabel" destination="pMR-yr-aVI" id="5Ig-kY-Mvi"/>
+                <outlet property="angerEffectButton" destination="qFW-td-3WC" id="Mua-8b-p5l"/>
+                <outlet property="currencyButton" destination="9ba-Eg-3V3" id="KKf-D1-eyO"/>
+                <outlet property="currentSptLabel" destination="RfZ-8Y-KeY" id="xyv-rY-Dqb"/>
+                <outlet property="exploreEffectButton" destination="VLS-Pu-hcz" id="RNW-t5-6Hc"/>
+                <outlet property="heartEffectButton" destination="a7U-Pw-y1a" id="8dV-DM-aMa"/>
                 <outlet property="pointLabelSet" destination="MNY-vD-hCt" id="ALZ-aQ-zhG"/>
                 <outlet property="ptLabel" destination="BFL-8k-EoC" id="unL-9r-Ifh"/>
                 <outlet property="shopButton" destination="c5S-vI-NQL" id="7Ss-d6-W7Q"/>
@@ -26,17 +32,17 @@
                     <rect key="frame" x="16" y="52" width="382" height="802"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNY-vD-hCt" userLabel="PointLabelSet">
-                            <rect key="frame" x="0.0" y="0.0" width="382" height="86"/>
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFL-8k-EoC" customClass="PtLabel" customModule="MOSAIC_LIFE_Rev2" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="330.5" height="86"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="330.5" height="100"/>
                                     <color key="backgroundColor" red="1" green="0.82416447199999998" blue="0.64218222690000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                     <color key="textColor" red="1" green="0.47184337110000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeZ-Ch-81N">
-                                    <rect key="frame" x="338.5" y="0.0" width="43.5" height="86"/>
+                                    <rect key="frame" x="338.5" y="0.0" width="43.5" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="43.5" id="cEO-83-VPC"/>
                                     </constraints>
@@ -49,6 +55,7 @@
                             <constraints>
                                 <constraint firstItem="BFL-8k-EoC" firstAttribute="leading" secondItem="MNY-vD-hCt" secondAttribute="leading" id="4dr-fU-ITC"/>
                                 <constraint firstItem="SeZ-Ch-81N" firstAttribute="top" secondItem="MNY-vD-hCt" secondAttribute="top" id="4iJ-oJ-2IB"/>
+                                <constraint firstAttribute="height" constant="100" id="AnB-ef-ylA"/>
                                 <constraint firstItem="BFL-8k-EoC" firstAttribute="top" secondItem="MNY-vD-hCt" secondAttribute="top" id="O5P-V3-ncW"/>
                                 <constraint firstItem="SeZ-Ch-81N" firstAttribute="centerY" secondItem="MNY-vD-hCt" secondAttribute="centerY" id="RbQ-At-fHo"/>
                                 <constraint firstAttribute="bottom" secondItem="BFL-8k-EoC" secondAttribute="bottom" id="TZu-xd-JwM"/>
@@ -58,7 +65,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0In-QJ-1jx" userLabel="ModeButtonStack">
-                            <rect key="frame" x="0.0" y="101" width="382" height="72"/>
+                            <rect key="frame" x="0.0" y="115" width="382" height="72"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5S-vI-NQL">
                                     <rect key="frame" x="0.0" y="0.0" width="183" height="72"/>
@@ -100,30 +107,29 @@
                             </constraints>
                         </stackView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Z21-0z-OyJ">
-                            <rect key="frame" x="0.0" y="188" width="382" height="466"/>
+                            <rect key="frame" x="0.0" y="202" width="382" height="456"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-I1-Dmb">
-                            <rect key="frame" x="0.0" y="669" width="382" height="38"/>
+                            <rect key="frame" x="0.0" y="673" width="382" height="34"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="260" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ba-Eg-3V3">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="38"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="coloncurrencysign.circle" catalog="system" title="x1.0">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     </buttonConfiguration>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RfZ-8Y-KeY">
-                                    <rect key="frame" x="80" y="0.0" width="136" height="38"/>
+                                    <rect key="frame" x="80" y="0.0" width="136" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="←" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNj-FF-mLT">
-                                    <rect key="frame" x="216" y="0.0" width="30" height="38"/>
+                                    <rect key="frame" x="216" y="0.0" width="30" height="34"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="T6S-3y-v3V"/>
                                     </constraints>
@@ -132,7 +138,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMR-yr-aVI">
-                                    <rect key="frame" x="246" y="0.0" width="136" height="38"/>
+                                    <rect key="frame" x="246" y="0.0" width="136" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>

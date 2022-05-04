@@ -39,7 +39,7 @@ class ShopViewController : CommonListViewController {
         listView.listTable.allowsSelectionDuringEditing = true
         
         // Model
-        currentPt = userDefaults.fetchInt(.currentPt)
+        currentPt = userDefaults.fetchInt(key: .currentPt)
         currentRate = 1
         
         // View - value

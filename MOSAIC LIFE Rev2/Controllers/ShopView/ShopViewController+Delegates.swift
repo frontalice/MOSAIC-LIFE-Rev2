@@ -22,6 +22,12 @@ extension ShopViewController : UITableViewDelegate {
             listView.pointLabel.text = String("\(currentPt) pt")
             tableView.deselectRow(at: indexPath, animated: false)
             userDefaults.set(.currentPt, currentPt)
+            NotificationCenter.default.post(name: .init(rawValue: "ACTIVITYLOG"), object: nil, userInfo: [
+                "Name":sourceName,
+                "Point":Int(sourcePt) * currentRate,
+                "ObtainedPoint":0,
+                "Type":"Shop"
+            ])
         } else {
             let alertController = getAlertController(title: "Itemの編集", message: "" , fields: 2, placeHolder: ["Item Name","Point"])
             alertController.textFields![0].text = sourceName

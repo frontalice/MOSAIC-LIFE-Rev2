@@ -21,6 +21,8 @@
 		A8AC4CD12812698100E162A2 /* CommonListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CD02812698100E162A2 /* CommonListView.xib */; };
 		A8AC4CD32812A0C000E162A2 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */; };
 		A8AC4CD52812A2D500E162A2 /* ShopViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD42812A2D500E162A2 /* ShopViewController+Delegates.swift */; };
+		A8AC4CD7281688F300E162A2 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD6281688F300E162A2 /* DateManager.swift */; };
+		A8AC4CD9281D199C00E162A2 /* ActivityLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD8281D199C00E162A2 /* ActivityLog.swift */; };
 		A8BF5E5C280FAE21008C3814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E5B280FAE21008C3814 /* AppDelegate.swift */; };
 		A8BF5E5E280FAE21008C3814 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E5D280FAE21008C3814 /* SceneDelegate.swift */; };
 		A8BF5E63280FAE21008C3814 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E61280FAE21008C3814 /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		A8AC4CD02812698100E162A2 /* CommonListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonListView.xib; sourceTree = "<group>"; };
 		A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		A8AC4CD42812A2D500E162A2 /* ShopViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopViewController+Delegates.swift"; sourceTree = "<group>"; };
+		A8AC4CD6281688F300E162A2 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		A8AC4CD8281D199C00E162A2 /* ActivityLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLog.swift; sourceTree = "<group>"; };
 		A8BF5E58280FAE21008C3814 /* MOSAIC LIFE Rev2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MOSAIC LIFE Rev2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BF5E5B280FAE21008C3814 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8BF5E5D280FAE21008C3814 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				A8AC4CA82812339400E162A2 /* PtLabel.swift */,
+				A8AC4CD8281D199C00E162A2 /* ActivityLog.swift */,
 				A8AC4CAA2812339400E162A2 /* MainView.swift */,
 				A8AC4CA92812339400E162A2 /* MainView.xib */,
 			);
@@ -241,6 +246,7 @@
 			children = (
 				A848E6F52811535B003FBE04 /* CommonListViewController.swift */,
 				A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */,
+				A8AC4CD6281688F300E162A2 /* DateManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8AC4CD7281688F300E162A2 /* DateManager.swift in Sources */,
 				A8AC4CCF2812690200E162A2 /* CommonListView.swift in Sources */,
 				A8AC4C992811629500E162A2 /* ModelEnum.swift in Sources */,
 				A8BF5E8C280FAF12008C3814 /* MainViewController.swift in Sources */,
@@ -330,6 +337,7 @@
 				A8AC4CD52812A2D500E162A2 /* ShopViewController+Delegates.swift in Sources */,
 				A8AC4CB12812339500E162A2 /* MainView.swift in Sources */,
 				A8BF5E66280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodeld in Sources */,
+				A8AC4CD9281D199C00E162A2 /* ActivityLog.swift in Sources */,
 				A8BF5EA5280FB8E7008C3814 /* Shop+CoreDataClass.swift in Sources */,
 				A8BF5EA3280FB8E7008C3814 /* Task+CoreDataClass.swift in Sources */,
 				A8BF5E5E280FAE21008C3814 /* SceneDelegate.swift in Sources */,

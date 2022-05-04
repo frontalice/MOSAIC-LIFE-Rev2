@@ -13,14 +13,44 @@ public enum UDDataStoreError : Error {
 
 public struct UDDataStore {
     public enum Key: String {
+        // Point
         case currentPt = "CURRENT_POINTS"
+        case ptPerHour = "POINTS_PER_HOUR"
+        case taskRate = "TASK_RATE"
+        case shopRate = "SHOP_RATE"
+        // Date
+        case dateBorder = "DATEBORDER"
+        case lastHour = "LAST_HOUR"
+        // Spt
+        case spt = "CURRENT_SPT"
+        case sptRank = "SPT_RANK"
+        case sptCount = "SPT_COUNT"
+        // Effect
+        case effectsCount = "EFFECTS_COUNT"
+        // Log
+        case activityLogText = "ACTIVITYLOGTEXT"
     }
     
     private let userDefaults = UserDefaults.standard
     
     public init() {
         userDefaults.register(defaults: [
-            Key.currentPt.rawValue : 0
+            // Point
+            Key.currentPt.rawValue : 0,
+            Key.ptPerHour.rawValue : 0,
+            Key.taskRate.rawValue : 1,
+            Key.shopRate.rawValue : 1,
+            // Date
+            Key.dateBorder.rawValue : DateManager.shared.reloadDateBorder(),
+            Key.lastHour.rawValue : 4,
+            // Spt
+            Key.spt.rawValue : 0,
+            Key.sptRank.rawValue : 0,
+            Key.sptCount.rawValue : 0,
+            // Effect
+            Key.effectsCount.rawValue : [[0,0,0],[0,0,0],[0,0,0]],
+            // Log
+            Key.activityLogText.rawValue : Data()
         ])
     }
     
@@ -32,7 +62,11 @@ public struct UDDataStore {
 //        return .failure(.unknown)
     }
     
-    public func fetchInt (_ key : Key) -> Int {
+    public func fetchObject (key : Key) -> Any? {
+        return userDefaults.object(forKey: key.rawValue)
+    }
+    
+    public func fetchInt (key : Key) -> Int {
         return userDefaults.integer(forKey: key.rawValue)
     }
     
