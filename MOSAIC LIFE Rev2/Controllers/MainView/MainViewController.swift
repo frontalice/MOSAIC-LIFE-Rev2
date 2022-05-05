@@ -21,6 +21,8 @@ class MainViewController: UIViewController {
     lazy var sptCount = userDefaults.fetchInt(key: .sptCount)
     let sptRankData = [ 0:1.0, 1:1.5, 2:2.0, 3:3.0, 4:4.0, 5:5.0 ]
     
+    // MARK: - LIFECYCLE
+    
     override func loadView() {
         view = mainView
     }
@@ -29,15 +31,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        // View - frame
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        // View - monitor
-        mainView.taskButton.addTarget(self, action: #selector(goToTask(_:)), for: .touchUpInside)
-        mainView.shopButton.addTarget(self, action: #selector(goToShop(_:)), for: .touchUpInside)
-        NotificationCenter.default.addObserver(self, selector: #selector(writeLog(notification:)), name: .init(rawValue: "ACTIVITYLOG"), object: nil)
-        
         // ログイン処理
         if DateManager.shared.judgeIsDayChanged() {
             print("DayChanged")
@@ -49,32 +42,38 @@ class MainViewController: UIViewController {
             }
             resetSpt()
             // ログイン処理-2: ログ初期化
-            mainView.activityLog.attributedText = NSMutableAttributedString(string:
-                "日付が更新されました。\n" +
-                "[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n" +
-                "補正レベル: Lv\(sptRank) / 残り\(sptCount)日\n" +
-                "----------------------------------------------------\n")
+            mainView.activityLog.attributedText = NSMutableAttributedString(
+                string: "日付が更新されました。\n" +
+                        "[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n" +
+                        "補正レベル: Lv\(sptRank) / 残り\(sptCount)日\n" +
+                        "----------------------------------------------------\n"
+            )
             // ログイン処理-3: ログ保存
-//            mainView.activityLog.saveText()
-            saveText()
+            mainView.activityLog.saveText()
             // ログイン処理-4: ptPerHour初期化
             ptPerHour = 0
             userDefaults.set(.ptPerHour, ptPerHour)
         } else {
-//            mainView.activityLog.loadText()
-//            mainView.activityLog.attributedText as! NSMutableAttributedString += NSMutableAttributedString(string: "[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n")
-            // テキストログ取得
-            if let archivedLog = UserDefaults.standard.object(forKey: "ACTIVITYLOGTEXT") {
-                if let unarchivedText = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(archivedLog as! Data) as? NSAttributedString {
-                    mainView.activityLog.attributedText = unarchivedText.mutableCopy() as! NSMutableAttributedString
-                } else {
-                    mainView.activityLog.attributedText = NSMutableAttributedString(string: "ログの読み込みに失敗しました。\n[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n")
-                }
-            // テキストログ取得失敗時
-            } else {
-                mainView.activityLog.attributedText = NSMutableAttributedString(string: "ログ内容が空です。\n[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n")
-            }
+            mainView.activityLog.loadText()
+            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
+                string: "ロード完了\n[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n"
+            ))
+            mainView.currencyButton.setTitle("x\(sptRankData[sptRank] ?? 1.0)", for: .normal)
+            mainView.currentSptLabel.text = String(currentSpt)
         }
+        
+        // View - frame
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        // View - monitor
+        mainView.taskButton.addTarget(self, action: #selector(goToTask(_:)), for: .touchUpInside)
+        mainView.shopButton.addTarget(self, action: #selector(goToShop(_:)), for: .touchUpInside)
+        mainView.currencyButton.addTarget(self, action: #selector(setSptOptions(_:)), for: .touchUpInside)
+        mainView.angerEffectButton.addTarget(self, action: #selector(angerEffectButtonTapped(_:)), for: .touchUpInside)
+        mainView.exploreEffectButton.addTarget(self, action: #selector(exploreEffectButtonTapped(_:)), for: .touchUpInside)
+        mainView.heartEffectButton.addTarget(self, action: #selector(heartEffectButtonTapped(_:)), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(writeLog(notification:)), name: .init(rawValue: "ACTIVITYLOG"), object: nil)
+        
         
         print("現在時刻:\(DateManager.shared.fetchCurrentTime(type: .normal))")
     }
@@ -127,8 +126,48 @@ class MainViewController: UIViewController {
         }
     }
     
+    @objc func setSptOptions(_ sender: Any){
+        let alertController = getAlertController(title: "SptOption", message: "", fields: 2, placeHolder: ["Rank","Count"])
+        alertController.textFields![0].text = String(sptRank)
+        alertController.textFields![1].text = String(sptCount)
+        let alertAction = UIAlertAction(title: "OK", style: .default){ (_) -> Void in
+            if let rank = Int(alertController.textFields![0].text!),
+               let count = Int(alertController.textFields![1].text!){
+                if rank >= 0 && rank <= 5 && count > 0 {
+                    self.sptRank = rank
+                    if rank != 5 && count > 2 {
+                        self.sptCount = 2
+                        self.userDefaults.set(.sptCount, 2)
+                    }
+                    self.sptCount = count
+                    self.resetSpt()
+                } else {
+                    self.showAlert(message: "不正な入力値です。")
+                }
+            }
+        }
+        alertController.addAction(alertAction)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func angerEffectButtonTapped(_ sender: Any){
+        effectButtonTapped(num: 0, button: sender as! UIButton, effect: mainView.effectSympols[0][0])
+    }
+    
+    @objc func exploreEffectButtonTapped(_ sender: Any){
+        effectButtonTapped(num: 1, button: sender as! UIButton, effect: mainView.effectSympols[1][0])
+    }
+    
+    @objc func heartEffectButtonTapped(_ sender: Any){
+        effectButtonTapped(num: 2, button: sender as! UIButton, effect: mainView.effectSympols[2][0])
+    }
+
+    
+    // MARK: - FUNCTIONS
+    
     func resetSpt() -> Void {
-        var moneyMultiplier : Double = 1.0
+        var moneyMultiplier : Double
         switch sptRank {
             case 5:
                 if sptCount > 2 {
@@ -142,9 +181,10 @@ class MainViewController: UIViewController {
             case 2: currentSpt = 6000;  moneyMultiplier = 2.0;
             case 1: currentSpt = 3000;  moneyMultiplier = 1.5;
             case 0: currentSpt = 0;     moneyMultiplier = 1.0;
-            default:currentSpt = 0;
+            default:currentSpt = 0;     moneyMultiplier = 1.0;
         }
         mainView.currencyButton.setTitle("x\(moneyMultiplier)", for: .normal)
+        mainView.currentSptLabel.text = String(currentSpt)
         userDefaults.set(.spt, currentSpt)
         userDefaults.set(.sptRank, sptRank)
         userDefaults.set(.sptCount, sptCount)
@@ -152,9 +192,9 @@ class MainViewController: UIViewController {
     
     @objc func writeLog(notification: NSNotification?) {
         let timeString = DateManager.shared.fetchCurrentTime(type: .hourAndMinute)
-        let name = notification?.userInfo!["Name"] as! String
-        let point = notification?.userInfo!["Point"] as! Int
-        let obtainedPoint = notification?.userInfo!["ObtainedPoint"] as! Int
+        let name = notification?.userInfo!["Name"] as? String ?? ""
+        let point = notification?.userInfo!["Point"] as? Int ?? 0
+        let obtainedPoint = notification?.userInfo!["ObtainedPoint"] as? Int ?? 0
         let modeType = notification?.userInfo!["Type"] as! String
         
         let presentHour = { () -> Int in
@@ -191,7 +231,7 @@ class MainViewController: UIViewController {
         
         // 切り取り線処理
         if presentHour > lastHour {
-            addAttributedText(attributedText: NSMutableAttributedString(
+            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
                 string: "---------↑\(lastHour)-\(presentHour)時合計: \(ptPerHour)pt---------\n"
             ))
             ptPerHour = obtainedPoint
@@ -208,32 +248,67 @@ class MainViewController: UIViewController {
                 string: "[\(timeString)] +\(point)pt【x\(userDefaults.fetchInt(key: .taskRate))】: \(name)\n"
             )
             text.addAttribute(.foregroundColor, value: UIColor.blue, range: NSMakeRange(0, text.length))
-            addAttributedText(attributedText: text)
+            mainView.activityLog.addAttributedText(attributedText: text)
         case "Shop":
             let text = NSMutableAttributedString(
                 string: "[\(timeString)] -\(point)pt【x\(userDefaults.fetchInt(key: .shopRate))】: \(name)\n"
             )
             text.addAttribute(.foregroundColor, value: UIColor.red, range: NSMakeRange(0, text.length))
-            addAttributedText(attributedText: text)
+            mainView.activityLog.addAttributedText(attributedText: text)
+        case "Effect":
+            let num = notification?.userInfo?["EffectType"] as! Int
+            let counts = mainView.effectsCount[num]
+            let text = NSMutableAttributedString(
+                string: "Effect: \(mainView.effectSympols[num][0])x\(counts[0]) \(mainView.effectSympols[num][1])x\(counts[1]) \(mainView.effectSympols[num][2])x\(counts[2])\n"
+            )
+            text.addAttribute(.foregroundColor, value: UIColor.blue, range: NSMakeRange(0, text.length))
+            mainView.activityLog.addAttributedText(attributedText: text)
         default:
             break
         }
-        addAttributedText(attributedText: NSMutableAttributedString(
-            string: "[\(timeString)] 現在: \(userDefaults.fetchInt(key: .currentPt))pts\n"
-        ))
-        saveText()
+        if modeType == "Task" || modeType == "Shop" {
+            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
+                string: "[\(timeString)] 現在: \(userDefaults.fetchInt(key: .currentPt))pts\n"
+            ))
+        }
+        mainView.activityLog.saveText()
         
     }
     
-    func addAttributedText(attributedText text:NSMutableAttributedString){
-        let finalText : NSMutableAttributedString = mainView.activityLog.attributedText?.mutableCopy() as! NSMutableAttributedString
-        finalText.insert(text, at: finalText.length)
-        mainView.activityLog.attributedText = finalText
-    }
-    
-    func saveText(){
-        let archivedText = try! NSKeyedArchiver.archivedData(withRootObject: mainView.activityLog.attributedText!, requiringSecureCoding: false)
-        UserDefaults.standard.set(archivedText, forKey: "ACTIVITYLOGTEXT")
+    func effectButtonTapped(num: Int,button: UIButton,effect: String){
+        let alertController = getAlertController(title: effect, message: "", fields: 3, placeHolder: ["Lsize","Msize","Ssize"])
+        for i in 0...2 {
+            alertController.textFields![i].text = String(mainView.effectsCount[num][i])
+        }
+        let alertAction = UIAlertAction(title: "OK", style: .default){ (_) -> Void in
+            // プロパティ更新
+            for i in 0...2 {
+                if let count = Int(alertController.textFields![i].text!){
+                    self.mainView.effectsCount[num][i] = count
+                } else {
+                    // 何もしない。編集前の値をそのまま保持する
+                }
+            }
+            self.userDefaults.set(.effectsCount, self.mainView.effectsCount)
+            
+            // ボタン内テキスト更新
+            button.setTitle( { () -> String?  in
+                var text = ""
+                for j in 0 ... 2 {
+                    text += "\(self.mainView.effectSympols[num][j])x \(self.mainView.effectsCount[num][j])\n"
+                }
+                return text.trimmingCharacters(in: .newlines)
+            }(), for: .normal)
+            
+            // ログ書込み
+            NotificationCenter.default.post(name: .init(rawValue: "ACTIVITYLOG"), object: nil, userInfo: [
+                "Type":"Effect",
+                "EffectType":num
+            ])
+        }
+        alertController.addAction(alertAction)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
 }

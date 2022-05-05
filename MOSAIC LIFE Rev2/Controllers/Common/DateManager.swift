@@ -74,6 +74,8 @@ class DateManager {
     }
     
     public func judgeIsDayChanged() -> Bool {
+        print("judge/現在時刻:\(now)")
+        print("judge/更新時間:\(dateBorder)")
         // 日付変更線に関する処理
         if now > dateBorder {
             
