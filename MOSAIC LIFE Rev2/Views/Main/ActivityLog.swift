@@ -11,6 +11,7 @@ public class ActivityLog : UITextView {
     func saveText(){
         let archivedText = try! NSKeyedArchiver.archivedData(withRootObject: self.attributedText!, requiringSecureCoding: false)
         UserDefaults.standard.set(archivedText, forKey: "ACTIVITYLOGTEXT")
+        scrollRangeToVisible(NSRange(location: attributedText.length-1, length: 1))
     }
     
     func loadText(){

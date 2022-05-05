@@ -41,7 +41,7 @@ public struct UDDataStore {
             Key.taskRate.rawValue : 1,
             Key.shopRate.rawValue : 1,
             // Date
-            Key.dateBorder.rawValue : DateManager.shared.reloadDateBorder(),
+            Key.dateBorder.rawValue : Calendar(identifier: .gregorian).date(from: DateComponents(year: 2022, month: 4, day: 1))!,
             Key.lastHour.rawValue : 4,
             // Spt
             Key.spt.rawValue : 0,

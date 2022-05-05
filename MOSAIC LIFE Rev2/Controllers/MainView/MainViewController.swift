@@ -27,7 +27,6 @@ class MainViewController: UIViewController {
         view = mainView
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -69,11 +68,12 @@ class MainViewController: UIViewController {
         mainView.taskButton.addTarget(self, action: #selector(goToTask(_:)), for: .touchUpInside)
         mainView.shopButton.addTarget(self, action: #selector(goToShop(_:)), for: .touchUpInside)
         mainView.currencyButton.addTarget(self, action: #selector(setSptOptions(_:)), for: .touchUpInside)
+        mainView.currentSptLabel.addTarget(self, action: #selector(currentSptEdited(_:)), for: .editingDidEnd)
+        mainView.addingSptLabel.addTarget(self, action: #selector(addingSptEdited(_:)), for: .editingDidEnd)
         mainView.angerEffectButton.addTarget(self, action: #selector(angerEffectButtonTapped(_:)), for: .touchUpInside)
         mainView.exploreEffectButton.addTarget(self, action: #selector(exploreEffectButtonTapped(_:)), for: .touchUpInside)
         mainView.heartEffectButton.addTarget(self, action: #selector(heartEffectButtonTapped(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(writeLog(notification:)), name: .init(rawValue: "ACTIVITYLOG"), object: nil)
-        
         
         print("現在時刻:\(DateManager.shared.fetchCurrentTime(type: .normal))")
     }
@@ -82,6 +82,7 @@ class MainViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         mainView.ptLabel.text = String(userDefaults.fetchInt(key: .currentPt))
         mainView.activityLog.scrollRangeToVisible(NSRange(location: mainView.activityLog.attributedText.length-1, length: 1))
+        mainView.currencyButton.setTitle("x\(sptRankData[sptRank] ?? 1.0)", for: .normal)
         
         NotificationCenter.default.addObserver(
             self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil
@@ -97,6 +98,7 @@ class MainViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    // MARK: - TARGET FUNCTIONS
     @objc private func goToTask(_ sender: Any) {
         self.performSegue(withIdentifier: "toTask", sender: self)
     }
@@ -151,6 +153,31 @@ class MainViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    @objc func currentSptEdited(_ sender: Any){
+        if let spt = Int(mainView.currentSptLabel.text!) {
+            currentSpt = spt
+            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
+                string: "現在Spt: \(currentSpt)spt\n"
+            ))
+            mainView.activityLog.saveText()
+            judgeSptRank()
+        }
+    }
+    
+    @objc func addingSptEdited(_ sender: Any){
+        if let spt = Int(mainView.addingSptLabel.text!){
+            currentSpt += spt
+            userDefaults.set(.spt, currentSpt)
+            judgeSptRank()
+            mainView.currentSptLabel.text = String(currentSpt)
+            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
+                string: "現在Spt: \(currentSpt)spt (+\(spt))\n"
+            ))
+            mainView.activityLog.saveText()
+        }
+        mainView.addingSptLabel.text = "add..."
+    }
+    
     @objc func angerEffectButtonTapped(_ sender: Any){
         effectButtonTapped(num: 0, button: sender as! UIButton, effect: mainView.effectSympols[0][0])
     }
@@ -164,7 +191,7 @@ class MainViewController: UIViewController {
     }
 
     
-    // MARK: - FUNCTIONS
+    // MARK: - OTHER FUNCTIONS
     
     func resetSpt() -> Void {
         var moneyMultiplier : Double
@@ -188,6 +215,44 @@ class MainViewController: UIViewController {
         userDefaults.set(.spt, currentSpt)
         userDefaults.set(.sptRank, sptRank)
         userDefaults.set(.sptCount, sptCount)
+    }
+    
+    func judgeSptRank() {
+        var tempRank = 0
+        var moneyMultiplier : Double = 1.0
+        var overCounter = 0
+        
+        if      currentSpt >= 15000 {
+            overCounter = (currentSpt - 15000) / 3000
+            tempRank = 5; moneyMultiplier = 5.0
+        }
+        else if currentSpt >= 12000 { tempRank = 4; moneyMultiplier = 4.0}
+        else if currentSpt >= 9000  { tempRank = 3; moneyMultiplier = 3.0}
+        else if currentSpt >= 6000  { tempRank = 2; moneyMultiplier = 2.0}
+        else if currentSpt >= 3000  { tempRank = 1; moneyMultiplier = 1.5}
+        else                        { tempRank = 0; moneyMultiplier = 1.0}
+        
+        if tempRank != sptRank {
+            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
+                string: "補正レベルが変動しました: \(sptRank) -> \(tempRank) [x\(moneyMultiplier)]\n"
+            ))
+            mainView.activityLog.saveText()
+            
+            sptRank = tempRank
+            userDefaults.set(.sptRank, sptRank)
+            sptCount = 2 + overCounter
+            userDefaults.set(.sptCount, sptCount)
+            
+            mainView.currencyButton.setTitle("x\(moneyMultiplier)", for: .normal)
+        }
+        if overCounter >= 1 {
+            sptCount = 2 + overCounter
+            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
+                string: "日数カウントが増加しました: 残り\(sptCount)日\n"
+            ))
+            mainView.activityLog.saveText()
+            userDefaults.set(.sptCount, sptCount)
+        }
     }
     
     @objc func writeLog(notification: NSNotification?) {
