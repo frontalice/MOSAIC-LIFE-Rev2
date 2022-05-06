@@ -57,8 +57,6 @@ class MainViewController: UIViewController {
             mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
                 string: "ロード完了\n[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n"
             ))
-            mainView.currencyButton.setTitle("x\(sptRankData[sptRank] ?? 1.0)", for: .normal)
-            mainView.currentSptLabel.text = String(currentSpt)
         }
         
         // View - frame
@@ -83,6 +81,7 @@ class MainViewController: UIViewController {
         mainView.ptLabel.text = String(userDefaults.fetchInt(key: .currentPt))
         mainView.activityLog.scrollRangeToVisible(NSRange(location: mainView.activityLog.attributedText.length-1, length: 1))
         mainView.currencyButton.setTitle("x\(sptRankData[sptRank] ?? 1.0)", for: .normal)
+        mainView.currentSptLabel.text = String(currentSpt)
         
         NotificationCenter.default.addObserver(
             self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil
@@ -159,7 +158,6 @@ class MainViewController: UIViewController {
             mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
                 string: "現在Spt: \(currentSpt)spt\n"
             ))
-            mainView.activityLog.saveText()
             judgeSptRank()
         }
     }
@@ -173,7 +171,6 @@ class MainViewController: UIViewController {
             mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
                 string: "現在Spt: \(currentSpt)spt (+\(spt))\n"
             ))
-            mainView.activityLog.saveText()
         }
         mainView.addingSptLabel.text = "add..."
     }
@@ -236,7 +233,6 @@ class MainViewController: UIViewController {
             mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
                 string: "補正レベルが変動しました: \(sptRank) -> \(tempRank) [x\(moneyMultiplier)]\n"
             ))
-            mainView.activityLog.saveText()
             
             sptRank = tempRank
             userDefaults.set(.sptRank, sptRank)
@@ -250,7 +246,6 @@ class MainViewController: UIViewController {
             mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
                 string: "日数カウントが増加しました: 残り\(sptCount)日\n"
             ))
-            mainView.activityLog.saveText()
             userDefaults.set(.sptCount, sptCount)
         }
     }
@@ -336,7 +331,6 @@ class MainViewController: UIViewController {
                 string: "[\(timeString)] 現在: \(userDefaults.fetchInt(key: .currentPt))pts\n"
             ))
         }
-        mainView.activityLog.saveText()
         
     }
     

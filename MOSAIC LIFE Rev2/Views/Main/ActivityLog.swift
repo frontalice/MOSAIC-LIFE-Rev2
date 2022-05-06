@@ -32,5 +32,6 @@ public class ActivityLog : UITextView {
         let finalText : NSMutableAttributedString = self.attributedText?.mutableCopy() as! NSMutableAttributedString
         finalText.insert(text, at: finalText.length)
         self.attributedText = finalText
+        saveText()
     }
 }
