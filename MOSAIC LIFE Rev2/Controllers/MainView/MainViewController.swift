@@ -13,12 +13,12 @@ class MainViewController: UIViewController {
     
     let userDefaults : UDDataStore = UDDataStore()
     
-    lazy var currentPt = userDefaults.fetchInt(key: .currentPt)
-    lazy var ptPerHour = userDefaults.fetchInt(key: .ptPerHour)
+    lazy var currentPt = userDefaults.fetchInt(key: .currentPt) { didSet { userDefaults.set(.currentPt, currentPt) } }
+    lazy var ptPerHour = userDefaults.fetchInt(key: .ptPerHour) { didSet { userDefaults.set(.ptPerHour, ptPerHour) } }
     
-    lazy var currentSpt = userDefaults.fetchInt(key: .spt)
-    lazy var sptRank = userDefaults.fetchInt(key: .sptRank)
-    lazy var sptCount = userDefaults.fetchInt(key: .sptCount)
+    lazy var currentSpt = userDefaults.fetchInt(key: .spt) { didSet { userDefaults.set(.spt, currentSpt) } }
+    lazy var sptRank = userDefaults.fetchInt(key: .sptRank) { didSet { userDefaults.set(.sptRank, sptRank) } }
+    lazy var sptCount = userDefaults.fetchInt(key: .sptCount) { didSet { userDefaults.set(.sptCount, sptCount) } }
     let sptRankData = [ 0:1.0, 1:1.5, 2:2.0, 3:3.0, 4:4.0, 5:5.0 ]
     
     // MARK: - LIFECYCLE
@@ -30,6 +30,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // Delegates
+        mainView.activityLog.delegate = self
+        
         // ログイン処理
         if DateManager.shared.judgeIsDayChanged() {
             print("DayChanged")
@@ -40,24 +44,28 @@ class MainViewController: UIViewController {
                 sptCount = 2
             }
             resetSpt()
-            // ログイン処理-2: ログ初期化
+            // ログイン処理-2: ログのアーカイブ化
+            mainView.activityLog.archiveText()
+            // ログイン処理-3: ログ初期化
             mainView.activityLog.attributedText = NSMutableAttributedString(
                 string: "日付が更新されました。\n" +
                         "[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n" +
                         "補正レベル: Lv\(sptRank) / 残り\(sptCount)日\n" +
                         "----------------------------------------------------\n"
             )
-            // ログイン処理-3: ログ保存
+            // ログイン処理-4: ログ保存
             mainView.activityLog.saveText()
-            // ログイン処理-4: ptPerHour初期化
+            // ログイン処理-5: ptPerHour初期化
             ptPerHour = 0
-            userDefaults.set(.ptPerHour, ptPerHour)
         } else {
             mainView.activityLog.loadText()
-            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
-                string: "ロード完了\n[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n"
-            ))
+            mainView.activityLog.addPlaneText(
+                planeText: "ロード完了\n[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n"
+            )
         }
+        
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        print(documentPath)
         
         // View - frame
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -138,7 +146,6 @@ class MainViewController: UIViewController {
                     self.sptRank = rank
                     if rank != 5 && count > 2 {
                         self.sptCount = 2
-                        self.userDefaults.set(.sptCount, 2)
                     }
                     self.sptCount = count
                     self.resetSpt()
@@ -155,9 +162,7 @@ class MainViewController: UIViewController {
     @objc func currentSptEdited(_ sender: Any){
         if let spt = Int(mainView.currentSptLabel.text!) {
             currentSpt = spt
-            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
-                string: "現在Spt: \(currentSpt)spt\n"
-            ))
+            mainView.activityLog.addPlaneText(planeText: "現在Spt: \(currentSpt)spt\n")
             judgeSptRank()
         }
     }
@@ -165,12 +170,9 @@ class MainViewController: UIViewController {
     @objc func addingSptEdited(_ sender: Any){
         if let spt = Int(mainView.addingSptLabel.text!){
             currentSpt += spt
-            userDefaults.set(.spt, currentSpt)
             judgeSptRank()
             mainView.currentSptLabel.text = String(currentSpt)
-            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
-                string: "現在Spt: \(currentSpt)spt (+\(spt))\n"
-            ))
+            mainView.activityLog.addPlaneText(planeText: "現在Spt: \(currentSpt)spt (+\(spt))\n")
         }
         mainView.addingSptLabel.text = "add..."
     }
@@ -209,9 +211,6 @@ class MainViewController: UIViewController {
         }
         mainView.currencyButton.setTitle("x\(moneyMultiplier)", for: .normal)
         mainView.currentSptLabel.text = String(currentSpt)
-        userDefaults.set(.spt, currentSpt)
-        userDefaults.set(.sptRank, sptRank)
-        userDefaults.set(.sptCount, sptCount)
     }
     
     func judgeSptRank() {
@@ -230,23 +229,19 @@ class MainViewController: UIViewController {
         else                        { tempRank = 0; moneyMultiplier = 1.0}
         
         if tempRank != sptRank {
-            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
-                string: "補正レベルが変動しました: \(sptRank) -> \(tempRank) [x\(moneyMultiplier)]\n"
-            ))
+            mainView.activityLog.addPlaneText(
+                planeText: "補正レベルが変動しました: \(sptRank) -> \(tempRank) [x\(moneyMultiplier)]\n"
+            )
             
             sptRank = tempRank
-            userDefaults.set(.sptRank, sptRank)
             sptCount = 2 + overCounter
-            userDefaults.set(.sptCount, sptCount)
+            userDefaults.set(.shopRate, moneyMultiplier)
             
             mainView.currencyButton.setTitle("x\(moneyMultiplier)", for: .normal)
         }
         if overCounter >= 1 {
             sptCount = 2 + overCounter
-            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
-                string: "日数カウントが増加しました: 残り\(sptCount)日\n"
-            ))
-            userDefaults.set(.sptCount, sptCount)
+            mainView.activityLog.addPlaneText(planeText: "日数カウントが増加しました: 残り\(sptCount)日\n")
         }
     }
     
@@ -291,14 +286,12 @@ class MainViewController: UIViewController {
         
         // 切り取り線処理
         if presentHour > lastHour {
-            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
-                string: "---------↑\(lastHour)-\(presentHour)時合計: \(ptPerHour)pt---------\n"
-            ))
+            mainView.activityLog.addPlaneText(
+                planeText: "---------↑\(lastHour)-\(presentHour)時合計: \(ptPerHour)pt---------\n"
+            )
             ptPerHour = obtainedPoint
-            userDefaults.set(.ptPerHour, obtainedPoint)
         } else {
             ptPerHour += obtainedPoint
-            userDefaults.set(.ptPerHour, ptPerHour)
         }
         
         // 書込み処理
@@ -327,9 +320,9 @@ class MainViewController: UIViewController {
             break
         }
         if modeType == "Task" || modeType == "Shop" {
-            mainView.activityLog.addAttributedText(attributedText: NSMutableAttributedString(
-                string: "[\(timeString)] 現在: \(userDefaults.fetchInt(key: .currentPt))pts\n"
-            ))
+            mainView.activityLog.addPlaneText(
+                planeText: "[\(timeString)] 現在: \(userDefaults.fetchInt(key: .currentPt))pts\n"
+            )
         }
         
     }
@@ -370,4 +363,12 @@ class MainViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+}
+
+extension MainViewController : UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == mainView.activityLog {
+            mainView.activityLog.saveText()
+        }
+    }
 }

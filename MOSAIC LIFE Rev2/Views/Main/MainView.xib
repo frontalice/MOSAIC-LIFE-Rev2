@@ -43,6 +43,7 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeZ-Ch-81N">
                                     <rect key="frame" x="338.5" y="0.0" width="43.5" height="100"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="43.5" id="cEO-83-VPC"/>
                                     </constraints>
@@ -51,7 +52,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="BFL-8k-EoC" firstAttribute="leading" secondItem="MNY-vD-hCt" secondAttribute="leading" id="4dr-fU-ITC"/>
                                 <constraint firstItem="SeZ-Ch-81N" firstAttribute="top" secondItem="MNY-vD-hCt" secondAttribute="top" id="4iJ-oJ-2IB"/>
@@ -191,7 +192,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Jwf-gg-6dM"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="reO-3r-8po" firstAttribute="top" secondItem="Jwf-gg-6dM" secondAttribute="top" constant="8" id="4wK-yM-t4t"/>
                 <constraint firstItem="reO-3r-8po" firstAttribute="leading" secondItem="Jwf-gg-6dM" secondAttribute="leading" constant="16" id="8B4-50-3Ds"/>
@@ -205,6 +206,9 @@
         <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

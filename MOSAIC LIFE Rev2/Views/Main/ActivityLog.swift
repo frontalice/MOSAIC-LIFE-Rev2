@@ -28,6 +28,47 @@ public class ActivityLog : UITextView {
         }
     }
     
+    func archiveText(){
+        if let archivedLog = UserDefaults.standard.object(forKey: "ACTIVITYLOGTEXT") {
+            if let logText = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(archivedLog as! Data) as? NSAttributedString {
+                
+                // ログをドキュメントフォルダにtxtファイルで保存
+                guard let dirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                    print("Failed to Archive: DocumentDirectory was not found.")
+                    return
+                }
+                
+                let createDate = "\(DateManager.shared.fetchCurrentTime(type: .year))\(DateManager.shared.fetchCurrentTime(type: .month))\(DateManager.shared.fetchCurrentTime(type: .day))"
+                let fileURL = dirURL.appendingPathComponent("\(createDate).txt")
+                FileManager.default.createFile(atPath: fileURL.path, contents: logText.string.data(using: .utf8))
+                
+                // 古いファイルを消去
+                if let files = try? FileManager.default.contentsOfDirectory(atPath: dirURL.path) {
+                    if files.count >= 30 {
+                        let targetURL = dirURL.appendingPathComponent(files.last!)
+                        guard let _ = try? FileManager.default.removeItem(at: targetURL) else {
+                            print("Failed to delete a file.")
+                            return
+                        }
+                        print("FileDelete Successed.")
+                    }
+                } else {
+                    print("Failed to delete a file: DocumentDirectory was not found.")
+                }
+                
+            } else {
+                print("Failed to Archive: Unarchiver could not unarchive.")
+            }
+        } else {
+            print("Failed to Archive: LogText was not found.")
+        }
+    }
+    
+    func addPlaneText(planeText text:String){
+        let convertedText = NSMutableAttributedString(string: text)
+        addAttributedText(attributedText: convertedText)
+    }
+    
     func addAttributedText(attributedText text:NSMutableAttributedString){
         let finalText : NSMutableAttributedString = self.attributedText?.mutableCopy() as! NSMutableAttributedString
         finalText.insert(text, at: finalText.length)

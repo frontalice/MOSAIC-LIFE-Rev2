@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="ptLabel" destination="bqe-SZ-gfZ" id="GOr-6t-OFp"/>
                 <outlet property="shopListView" destination="7MJ-DF-YAc" id="5lk-wt-ebI"/>
+                <outlet property="shopRateLabel" destination="ITS-NV-XRN" id="I0g-xZ-OUm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -28,13 +29,21 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITS-NV-XRN">
+                            <rect key="frame" x="366" y="12" width="30" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <color key="tintColor" systemColor="systemGreenColor"/>
                     <constraints>
                         <constraint firstItem="bqe-SZ-gfZ" firstAttribute="leading" secondItem="se0-vi-8xt" secondAttribute="leading" constant="18" id="MEH-Sg-tYn"/>
                         <constraint firstItem="bqe-SZ-gfZ" firstAttribute="centerY" secondItem="se0-vi-8xt" secondAttribute="centerY" id="iNT-0t-Jey"/>
+                        <constraint firstAttribute="trailing" secondItem="ITS-NV-XRN" secondAttribute="trailing" constant="18" id="mrn-GQ-bRn"/>
                         <constraint firstAttribute="height" constant="45" id="qCm-sk-V63"/>
+                        <constraint firstItem="ITS-NV-XRN" firstAttribute="centerY" secondItem="se0-vi-8xt" secondAttribute="centerY" id="x7K-8q-TP4"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7MJ-DF-YAc">

@@ -28,6 +28,22 @@ class DateManager {
         switch type {
         case .normal:
             return format.string(from: japanCurrentTime)
+        case .year:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y", options: 0, locale: Locale(identifier: "ja_JP"))
+            return dateFormatter.string(from: now)
+        case .yearAndMonthAndDay:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMdd", options: 0, locale: Locale(identifier: "ja_JP"))
+            return dateFormatter.string(from: now)
+        case .month:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM", options: 0, locale: Locale(identifier: "ja_JP"))
+            return dateFormatter.string(from: now)
+        case .day:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dd", options: 0, locale: Locale(identifier: "ja_JP"))
+            return dateFormatter.string(from: now)
         case .hour:
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "H"
@@ -61,6 +77,10 @@ class DateManager {
 
 public enum TimeType {
     case normal
+    case year
+    case yearAndMonthAndDay
+    case month
+    case day
     case hour
     case hourAndMinute
 }

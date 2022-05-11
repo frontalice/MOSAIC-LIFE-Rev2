@@ -15,6 +15,7 @@ public final class ShopView: CommonListView {
         super.init(frame: frame)
         listTable = shopListView
         pointLabel = ptLabel
+        rateLabel = shopRateLabel
         if #available(iOS 15, *) {
             listTable.sectionHeaderTopPadding = 0.0
         }
@@ -26,4 +27,5 @@ public final class ShopView: CommonListView {
     
     @IBOutlet public weak var shopListView: UITableView!
     @IBOutlet public weak var ptLabel: UILabel!
+    @IBOutlet public weak var shopRateLabel: UILabel!
 }

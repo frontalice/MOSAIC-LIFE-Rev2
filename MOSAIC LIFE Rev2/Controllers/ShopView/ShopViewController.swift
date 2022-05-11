@@ -18,6 +18,8 @@ class ShopViewController : CommonListViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Shop> = createFetchedResultsController()
     
+    lazy var shopRate = userDefaults.fetchDouble(key: .shopRate)
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         listView = ShopView()
@@ -40,7 +42,6 @@ class ShopViewController : CommonListViewController {
         
         // Model
         currentPt = userDefaults.fetchInt(key: .currentPt)
-        currentRate = 1
         
         // View - value
         listView.pointLabel.text = String("\(currentPt) pt")
@@ -51,6 +52,7 @@ class ShopViewController : CommonListViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         syncBarAppearance(modeColor)
+        listView.rateLabel.text = "x\(shopRate)"
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {

@@ -70,4 +70,8 @@ public struct UDDataStore {
         return userDefaults.integer(forKey: key.rawValue)
     }
     
+    public func fetchDouble (key: Key) -> Double {
+        return userDefaults.double(forKey: key.rawValue)
+    }
+    
 }

@@ -11,4 +11,5 @@ public class CommonListView : XibLoadView {
     weak var listTable : UITableView!
     weak var pointLabel : UILabel!
     weak var rateSegmentControl : UISegmentedControl!
+    weak var rateLabel : UILabel!
 }

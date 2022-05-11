@@ -15,16 +15,17 @@ extension ShopViewController : UITableViewDelegate {
         let sourcePt : Int32 = fetchedResultsController.object(at: indexPath).pt
         
         if !self.listView.listTable.isEditing {
-            if currentPt < Int(sourcePt) * currentRate {
+            let pt = Double(sourcePt)
+            if currentPt < Int(pt * shopRate) {
                 return
             }
-            currentPt -= Int(sourcePt) * currentRate
+            currentPt -= Int(pt * shopRate)
             listView.pointLabel.text = String("\(currentPt) pt")
             tableView.deselectRow(at: indexPath, animated: false)
             userDefaults.set(.currentPt, currentPt)
             NotificationCenter.default.post(name: .init(rawValue: "ACTIVITYLOG"), object: nil, userInfo: [
                 "Name":sourceName,
-                "Point":Int(sourcePt) * currentRate,
+                "Point":Int(pt * shopRate),
                 "ObtainedPoint":0,
                 "Type":"Shop"
             ])
@@ -87,8 +88,9 @@ extension ShopViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
         let object = fetchedResultsController.object(at: indexPath)
+        let pt = Int(Double(object.pt) * shopRate)
         cell.textLabel?.text = object.name
-        cell.detailTextLabel?.text = String(object.pt * Int32(currentRate))
+        cell.detailTextLabel?.text = String(pt)
         return cell
     }
     
@@ -208,6 +210,9 @@ extension ShopViewController : NSFetchedResultsControllerDelegate {
             self.listView.listTable.reloadRows(at: [indexPath!], with: .none)
         case .delete:
             self.listView.listTable.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            self.listView.listTable.deleteRows(at: [indexPath!], with: .fade)
+            self.listView.listTable.insertRows(at: [newIndexPath!], with: .fade)
         default:
             break
         }

@@ -133,6 +133,7 @@ class CommonListViewController : UIViewController {
                 if !self.addNewRecord(model: model, context: context, name: name, pt: pt, category: category){
                     self.showAlert(message: "データベースへの追加に失敗しました。")
                 }
+                self.listView.listTable.reloadData()
             } else {
                 self.showAlert(message: "カテゴリ名を入力して下さい。")
             }
