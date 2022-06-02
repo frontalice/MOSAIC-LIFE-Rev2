@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A81D3FFD2848ECFE001945EF /* ShopPickerViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81D3FFC2848ECFE001945EF /* ShopPickerViewDelegates.swift */; };
-		A83EDBB128483902004D272F /* TaskPickerViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83EDBB028483902004D272F /* TaskPickerViewDelegates.swift */; };
+		A81D3FFF28490220001945EF /* UITableViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81D3FFE28490220001945EF /* UITableViewFunctions.swift */; };
+		A81D4001284905F4001945EF /* UIPickerViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81D4000284905F4001945EF /* UIPickerViewFunctions.swift */; };
 		A83EDBC42848A9A5004D272F /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83EDBC22848A9A5004D272F /* Item+CoreDataClass.swift */; };
 		A83EDBC52848A9A5004D272F /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83EDBC32848A9A5004D272F /* Item+CoreDataProperties.swift */; };
 		A848E6F62811535B003FBE04 /* CommonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848E6F52811535B003FBE04 /* CommonListViewController.swift */; };
-		A8A8573028312E4500BF8972 /* Shop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A8572C28312E4500BF8972 /* Shop+CoreDataClass.swift */; };
-		A8A8573128312E4500BF8972 /* Shop+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A8572D28312E4500BF8972 /* Shop+CoreDataProperties.swift */; };
 		A8AC4C992811629500E162A2 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4C982811629500E162A2 /* ModelEnum.swift */; };
 		A8AC4CAF2812339500E162A2 /* PtLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CA82812339400E162A2 /* PtLabel.swift */; };
 		A8AC4CB02812339500E162A2 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CA92812339400E162A2 /* MainView.xib */; };
@@ -26,7 +24,6 @@
 		A8AC4CCF2812690200E162A2 /* CommonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CCE2812690200E162A2 /* CommonListView.swift */; };
 		A8AC4CD12812698100E162A2 /* CommonListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CD02812698100E162A2 /* CommonListView.xib */; };
 		A8AC4CD32812A0C000E162A2 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */; };
-		A8AC4CD52812A2D500E162A2 /* ShopTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD42812A2D500E162A2 /* ShopTableViewDelegates.swift */; };
 		A8AC4CD7281688F300E162A2 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD6281688F300E162A2 /* DateManager.swift */; };
 		A8AC4CD9281D199C00E162A2 /* ActivityLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CD8281D199C00E162A2 /* ActivityLog.swift */; };
 		A8BF5E5C280FAE21008C3814 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E5B280FAE21008C3814 /* AppDelegate.swift */; };
@@ -36,22 +33,19 @@
 		A8BF5E68280FAE28008C3814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E67280FAE28008C3814 /* Assets.xcassets */; };
 		A8BF5E6B280FAE28008C3814 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E69280FAE28008C3814 /* LaunchScreen.storyboard */; };
 		A8BF5E8A280FAF12008C3814 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E86280FAF12008C3814 /* TaskViewController.swift */; };
-		A8BF5E8B280FAF12008C3814 /* TaskTableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E87280FAF12008C3814 /* TaskTableViewDelegates.swift */; };
 		A8BF5E8C280FAF12008C3814 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E89280FAF12008C3814 /* MainViewController.swift */; };
 		A8BF5EAC280FB989008C3814 /* UDDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EAB280FB989008C3814 /* UDDataStore.swift */; };
 		A8BF5EB2280FE3EB008C3814 /* ViewController+CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A81D3FFC2848ECFE001945EF /* ShopPickerViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopPickerViewDelegates.swift; sourceTree = "<group>"; };
-		A83EDBB028483902004D272F /* TaskPickerViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPickerViewDelegates.swift; sourceTree = "<group>"; };
+		A81D3FFE28490220001945EF /* UITableViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewFunctions.swift; sourceTree = "<group>"; };
+		A81D4000284905F4001945EF /* UIPickerViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerViewFunctions.swift; sourceTree = "<group>"; };
 		A83EDBB82848A8D5004D272F /* MOSAIC_LIFE_Rev2_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MOSAIC_LIFE_Rev2_v3.xcdatamodel; sourceTree = "<group>"; };
 		A83EDBC22848A9A5004D272F /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A83EDBC32848A9A5004D272F /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A848E6F52811535B003FBE04 /* CommonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListViewController.swift; sourceTree = "<group>"; };
 		A8A8572B28312DBF00BF8972 /* MOSAIC_LIFE_Rev2_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MOSAIC_LIFE_Rev2_v2.xcdatamodel; sourceTree = "<group>"; };
-		A8A8572C28312E4500BF8972 /* Shop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A8A8572D28312E4500BF8972 /* Shop+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8AC4C982811629500E162A2 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		A8AC4CA82812339400E162A2 /* PtLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtLabel.swift; sourceTree = "<group>"; };
 		A8AC4CA92812339400E162A2 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
@@ -64,7 +58,6 @@
 		A8AC4CCE2812690200E162A2 /* CommonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListView.swift; sourceTree = "<group>"; };
 		A8AC4CD02812698100E162A2 /* CommonListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonListView.xib; sourceTree = "<group>"; };
 		A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
-		A8AC4CD42812A2D500E162A2 /* ShopTableViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewDelegates.swift; sourceTree = "<group>"; };
 		A8AC4CD6281688F300E162A2 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		A8AC4CD8281D199C00E162A2 /* ActivityLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLog.swift; sourceTree = "<group>"; };
 		A8BF5E58280FAE21008C3814 /* MOSAIC LIFE Rev2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MOSAIC LIFE Rev2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +69,6 @@
 		A8BF5E6A280FAE28008C3814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8BF5E6C280FAE28008C3814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8BF5E86280FAF12008C3814 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
-		A8BF5E87280FAF12008C3814 /* TaskTableViewDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewDelegates.swift; sourceTree = "<group>"; };
 		A8BF5E89280FAF12008C3814 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A8BF5EAB280FB989008C3814 /* UDDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDDataStore.swift; sourceTree = "<group>"; };
 		A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CommonFunctions.swift"; sourceTree = "<group>"; };
@@ -106,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				A8AC4CD22812A0C000E162A2 /* ShopViewController.swift */,
-				A8AC4CD42812A2D500E162A2 /* ShopTableViewDelegates.swift */,
-				A81D3FFC2848ECFE001945EF /* ShopPickerViewDelegates.swift */,
 			);
 			path = ShopView;
 			sourceTree = "<group>";
@@ -202,8 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				A8BF5E86280FAF12008C3814 /* TaskViewController.swift */,
-				A8BF5E87280FAF12008C3814 /* TaskTableViewDelegates.swift */,
-				A83EDBB028483902004D272F /* TaskPickerViewDelegates.swift */,
 			);
 			path = TaskView;
 			sourceTree = "<group>";
@@ -232,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				A83EDBBD2848A935004D272F /* Item */,
-				A8BF5EAA280FB923008C3814 /* Shop */,
 				A8BF5E64280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodeld */,
 				A8BF5EAB280FB989008C3814 /* UDDataStore.swift */,
 				A8AC4C982811629500E162A2 /* ModelEnum.swift */,
@@ -240,19 +227,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A8BF5EAA280FB923008C3814 /* Shop */ = {
-			isa = PBXGroup;
-			children = (
-				A8A8572C28312E4500BF8972 /* Shop+CoreDataClass.swift */,
-				A8A8572D28312E4500BF8972 /* Shop+CoreDataProperties.swift */,
-			);
-			path = Shop;
-			sourceTree = "<group>";
-		};
 		A8BF5EB0280FE3B7008C3814 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				A848E6F52811535B003FBE04 /* CommonListViewController.swift */,
+				A81D3FFE28490220001945EF /* UITableViewFunctions.swift */,
+				A81D4000284905F4001945EF /* UIPickerViewFunctions.swift */,
 				A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */,
 				A8AC4CD6281688F300E162A2 /* DateManager.swift */,
 			);
@@ -343,23 +323,19 @@
 				A8AC4CB22812339500E162A2 /* TaskView.swift in Sources */,
 				A8AC4CD32812A0C000E162A2 /* ShopViewController.swift in Sources */,
 				A8BF5E8A280FAF12008C3814 /* TaskViewController.swift in Sources */,
-				A8AC4CD52812A2D500E162A2 /* ShopTableViewDelegates.swift in Sources */,
-				A83EDBB128483902004D272F /* TaskPickerViewDelegates.swift in Sources */,
 				A8AC4CB12812339500E162A2 /* MainView.swift in Sources */,
 				A8BF5E66280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodeld in Sources */,
-				A81D3FFD2848ECFE001945EF /* ShopPickerViewDelegates.swift in Sources */,
-				A8A8573128312E4500BF8972 /* Shop+CoreDataProperties.swift in Sources */,
 				A83EDBC52848A9A5004D272F /* Item+CoreDataProperties.swift in Sources */,
 				A8AC4CD9281D199C00E162A2 /* ActivityLog.swift in Sources */,
+				A81D4001284905F4001945EF /* UIPickerViewFunctions.swift in Sources */,
 				A8BF5E5E280FAE21008C3814 /* SceneDelegate.swift in Sources */,
 				A8BF5EB2280FE3EB008C3814 /* ViewController+CommonFunctions.swift in Sources */,
 				A848E6F62811535B003FBE04 /* CommonListViewController.swift in Sources */,
-				A8BF5E8B280FAF12008C3814 /* TaskTableViewDelegates.swift in Sources */,
 				A8AC4CC62812347C00E162A2 /* XibLoadView.swift in Sources */,
-				A8A8573028312E4500BF8972 /* Shop+CoreDataClass.swift in Sources */,
 				A8BF5EAC280FB989008C3814 /* UDDataStore.swift in Sources */,
 				A8AC4CCA2812353100E162A2 /* ShopView.swift in Sources */,
 				A8AC4CAF2812339500E162A2 /* PtLabel.swift in Sources */,
+				A81D3FFF28490220001945EF /* UITableViewFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

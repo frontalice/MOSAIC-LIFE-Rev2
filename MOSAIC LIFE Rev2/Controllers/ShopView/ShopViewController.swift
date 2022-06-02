@@ -12,11 +12,7 @@ class ShopViewController : CommonListViewController {
     
     // MARK: - View Properties
     
-    let modeColor : UIColor = .systemGreen
-    
     // MARK: - Model Properties
-    
-    lazy var shopRate = userDefaults.fetchDouble(key: .shopRate)
     
     // MARK: - LifeCycle Functions
     
@@ -34,11 +30,11 @@ class ShopViewController : CommonListViewController {
         super.viewDidLoad()
         
         // View - frame
-        listView.listTable.delegate = self
-        listView.listTable.dataSource = self
+        modeColor = .systemGreen
         
         // Model
-        
+        listView.listTable.delegate = self
+        listView.listTable.dataSource = self
         
         // View - value
         
@@ -70,47 +66,4 @@ class ShopViewController : CommonListViewController {
     }
     
     // MARK: - Model Control Functions
-//    private func fetchTasks() {
-//        do {
-//            try fetchedResultsController.performFetch()
-//        } catch let error as NSError {
-//            fatalError("Error！: Failed in Fetching Tasks -> \(error)")
-//        }
-//        listView.listTable.reloadData()
-//        initializeCategoryOptions()
-//        print(categoryOptions)
-//    }
-    
-//    func insertRecordHandler (alertController: UIAlertController, model: ModelEnum, context: NSManagedObjectContext!) -> ((UIAlertAction) -> Void) {
-//        let handler : ((UIAlertAction) -> Void) = { _ in
-//            if let name = alertController.textFields![0].text,
-//               let ptStr = alertController.textFields![1].text,
-//               let category = alertController.textFields![2].text {
-//                if let pt = Int(ptStr) {
-//                    if category != self.newCategory {
-//                        if !self.addNewRecord(model: model, context: context, name: name, pt: pt, category: category) {
-//                            self.showAlert(message: "データベースへの追加に失敗しました。")
-//                        }
-//                    } else {
-//                        self.createCategory(name: name, pt: pt)
-//                    }
-//                } else {
-//                    self.showAlert(message: "不正な文字列が含まれています。")
-//                }
-//            } else {
-//                self.showAlert(message: "不正な文字列が含まれています。")
-//            }
-//        }
-//        return handler
-//    }
-    
-//    func createCategory(name: String, pt: Int) {
-//        let alertController = getAlertController(title: "カテゴリを追加", message: "カテゴリ名を入力", fields: 1, placeHolder: ["カテゴリ名"])
-//
-//        let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: insertCategoryHandler(alertController: alertController, model: .shop, context: context, name: name, pt: pt))
-//
-//        alertController.addAction(alertAction)
-//        present(alertController, animated: true, completion: nil)
-//    }
-    
 }

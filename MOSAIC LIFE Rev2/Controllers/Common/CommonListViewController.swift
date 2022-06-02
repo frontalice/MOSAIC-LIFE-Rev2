@@ -14,7 +14,7 @@ class CommonListViewController : UIViewController {
     // MARK: - View Properties
     
     var listView : CommonListView
-    
+    var modeColor : UIColor = .systemTeal
     lazy var editingTextField : UITextField = UITextField()
     
     // MARK: - Model Properties
@@ -28,14 +28,14 @@ class CommonListViewController : UIViewController {
     }()
     
     var items = [String:[Item]]()
+    var categories : [String] = []
+    let newCategory = "新しいカテゴリを追加"
     
     lazy var userDefaults : UDDataStore = UDDataStore()
     
     var currentPt = 0
-    
-    var categories : [String] = []
-    
-    let newCategory = "新しいカテゴリを追加"
+    lazy var taskRate = userDefaults.fetchInt(key: .taskRate)
+    lazy var shopRate = userDefaults.fetchDouble(key: .shopRate)
     
     // MARK: - LifeCycle Functions
     
