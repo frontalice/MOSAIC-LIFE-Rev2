@@ -18,7 +18,6 @@ extension TaskViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        initializeCategoryOptions()
         var source = categories
         source.append(newCategory)
         return source[row]

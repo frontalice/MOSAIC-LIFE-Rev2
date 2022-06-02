@@ -16,9 +16,9 @@ class ShopViewController : CommonListViewController {
     
     // MARK: - Model Properties
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Shop> = createFetchedResultsController()
-    
     lazy var shopRate = userDefaults.fetchDouble(key: .shopRate)
+    
+    // MARK: - LifeCycle Functions
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -30,23 +30,19 @@ class ShopViewController : CommonListViewController {
         listView = ShopView()
     }
     
-    // MARK: - LifeCycle Functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // View - frame
         listView.listTable.delegate = self
         listView.listTable.dataSource = self
-        listView.listTable.allowsSelectionDuringEditing = true
         
         // Model
-        currentPt = userDefaults.fetchInt(key: .currentPt)
+        
         
         // View - value
-        listView.pointLabel.text = String("\(currentPt) pt")
         
-        fetchTasks()
+        fetchItems(modelType: "Shop")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,9 +60,9 @@ class ShopViewController : CommonListViewController {
         
         alertController.textFields![2].inputAccessoryView = toolbar
         alertController.textFields![2].inputView = categorySelectPickerView
-        alertController.textFields![2].text = categoryOptions[0]
+        alertController.textFields![2].text = categories.count == 0 ? newCategory : categories[0]
         
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: insertRecordHandler(alertController: alertController, model: .shop, context: context))
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: insertRecordHandler(alertController: alertController, modelType: "Shop", context: context))
         
         alertController.addAction(alertAction)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -74,47 +70,47 @@ class ShopViewController : CommonListViewController {
     }
     
     // MARK: - Model Control Functions
-    private func fetchTasks() {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            fatalError("Error！: Failed in Fetching Tasks -> \(error)")
-        }
-        listView.listTable.reloadData()
-        initializeCategoryOptions()
-        print(categoryOptions)
-    }
+//    private func fetchTasks() {
+//        do {
+//            try fetchedResultsController.performFetch()
+//        } catch let error as NSError {
+//            fatalError("Error！: Failed in Fetching Tasks -> \(error)")
+//        }
+//        listView.listTable.reloadData()
+//        initializeCategoryOptions()
+//        print(categoryOptions)
+//    }
     
-    func insertRecordHandler (alertController: UIAlertController, model: ModelEnum, context: NSManagedObjectContext!) -> ((UIAlertAction) -> Void) {
-        let handler : ((UIAlertAction) -> Void) = { _ in
-            if let name = alertController.textFields![0].text,
-               let ptStr = alertController.textFields![1].text,
-               let category = alertController.textFields![2].text {
-                if let pt = Int(ptStr) {
-                    if category != self.newCategory {
-                        if !self.addNewRecord(model: model, context: context, name: name, pt: pt, category: category) {
-                            self.showAlert(message: "データベースへの追加に失敗しました。")
-                        }
-                    } else {
-                        self.createCategory(name: name, pt: pt)
-                    }
-                } else {
-                    self.showAlert(message: "不正な文字列が含まれています。")
-                }
-            } else {
-                self.showAlert(message: "不正な文字列が含まれています。")
-            }
-        }
-        return handler
-    }
+//    func insertRecordHandler (alertController: UIAlertController, model: ModelEnum, context: NSManagedObjectContext!) -> ((UIAlertAction) -> Void) {
+//        let handler : ((UIAlertAction) -> Void) = { _ in
+//            if let name = alertController.textFields![0].text,
+//               let ptStr = alertController.textFields![1].text,
+//               let category = alertController.textFields![2].text {
+//                if let pt = Int(ptStr) {
+//                    if category != self.newCategory {
+//                        if !self.addNewRecord(model: model, context: context, name: name, pt: pt, category: category) {
+//                            self.showAlert(message: "データベースへの追加に失敗しました。")
+//                        }
+//                    } else {
+//                        self.createCategory(name: name, pt: pt)
+//                    }
+//                } else {
+//                    self.showAlert(message: "不正な文字列が含まれています。")
+//                }
+//            } else {
+//                self.showAlert(message: "不正な文字列が含まれています。")
+//            }
+//        }
+//        return handler
+//    }
     
-    func createCategory(name: String, pt: Int) {
-        let alertController = getAlertController(title: "カテゴリを追加", message: "カテゴリ名を入力", fields: 1, placeHolder: ["カテゴリ名"])
-        
-        let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: insertCategoryHandler(alertController: alertController, model: .shop, context: context, name: name, pt: pt))
-        
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
-    }
+//    func createCategory(name: String, pt: Int) {
+//        let alertController = getAlertController(title: "カテゴリを追加", message: "カテゴリ名を入力", fields: 1, placeHolder: ["カテゴリ名"])
+//
+//        let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: insertCategoryHandler(alertController: alertController, model: .shop, context: context, name: name, pt: pt))
+//
+//        alertController.addAction(alertAction)
+//        present(alertController, animated: true, completion: nil)
+//    }
     
 }

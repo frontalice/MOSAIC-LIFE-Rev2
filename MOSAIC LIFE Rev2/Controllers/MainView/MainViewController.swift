@@ -209,6 +209,7 @@ class MainViewController: UIViewController {
         }
         mainView.currencyButton.setTitle("x\(moneyMultiplier)", for: .normal)
         mainView.currentSptLabel.text = String(currentSpt)
+        userDefaults.set(.shopRate, moneyMultiplier)
     }
     
     func judgeSptRank() {

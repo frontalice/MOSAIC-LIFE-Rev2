@@ -12,17 +12,17 @@ extension TaskViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sourceName : String = tasks[categories[indexPath.section]]![indexPath.row].name ?? ""
-        let sourcePt : Int32 = tasks[categories[indexPath.section]]![indexPath.row].pt
+        let sourceName : String = items[categories[indexPath.section]]![indexPath.row].name
+        let sourcePt : Int32 = items[categories[indexPath.section]]![indexPath.row].pt
         
         if !self.listView.listTable.isEditing {
-            currentPt += Int(sourcePt) * currentRate
+            currentPt += Int(sourcePt) * taskRate
             listView.pointLabel.text = String("\(currentPt) pt")
             tableView.deselectRow(at: indexPath, animated: false)
             userDefaults.set(.currentPt, currentPt)
             NotificationCenter.default.post(name: .init(rawValue: "ACTIVITYLOG"), object: nil, userInfo: [
                 "Name":sourceName,
-                "Point":Int(sourcePt) * currentRate,
+                "Point":Int(sourcePt) * taskRate,
                 "ObtainedPoint":Int(sourcePt),
                 "Type":"Task"
             ])
@@ -30,7 +30,7 @@ extension TaskViewController : UITableViewDelegate {
             let alertController = getAlertController(title: "Taskの編集", message: "" , fields: 2, placeHolder: ["Task Name","Point"])
             alertController.textFields![0].text = sourceName
             alertController.textFields![1].text = String(sourcePt)
-            let alertAction = UIAlertAction(title: "OK", style: .default, handler: updateRecordHandler(alertController: alertController, model: .task, context: context, indexPath: indexPath))
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: updateRecordHandler(alertController: alertController, context: context, indexPath: indexPath))
             
             alertController.addAction(alertAction)
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -39,13 +39,13 @@ extension TaskViewController : UITableViewDelegate {
         
     }
     
-    func updateRecordHandler (alertController: UIAlertController, model: ModelEnum, context: NSManagedObjectContext!, indexPath: IndexPath) -> ((UIAlertAction) -> Void) {
+    func updateRecordHandler (alertController: UIAlertController, context: NSManagedObjectContext!, indexPath: IndexPath) -> ((UIAlertAction) -> Void) {
         let handler : ((UIAlertAction) -> Void) = { _ in
             if let nameText = alertController.textFields![0].text,
                let ptText = alertController.textFields![1].text {
                 if let ptInt32 = Int32(ptText) {
-                    self.tasks[self.categories[indexPath.section]]![indexPath.row].name = nameText
-                    self.tasks[self.categories[indexPath.section]]![indexPath.row].pt = ptInt32
+                    self.items[self.categories[indexPath.section]]![indexPath.row].name = nameText
+                    self.items[self.categories[indexPath.section]]![indexPath.row].pt = ptInt32
                     do {
                         try self.context.save()
                         self.listView.listTable.reloadData()
@@ -68,20 +68,20 @@ extension TaskViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let targetTask = tasks[categories[sourceIndexPath.section]]![sourceIndexPath.row]
+        let targetTask = items[categories[sourceIndexPath.section]]![sourceIndexPath.row]
         targetTask.category = categories[destinationIndexPath.section]
-        tasks[categories[sourceIndexPath.section]]!.remove(at: sourceIndexPath.row)
-        tasks[categories[destinationIndexPath.section]]!.insert(targetTask, at: destinationIndexPath.row)
+        items[categories[sourceIndexPath.section]]!.remove(at: sourceIndexPath.row)
+        items[categories[destinationIndexPath.section]]!.insert(targetTask, at: destinationIndexPath.row)
         
-        for i in 0..<tasks[categories[destinationIndexPath.section]]!.count {
-            tasks[categories[destinationIndexPath.section]]![i].index = Int16(i)
+        for i in 0..<items[categories[destinationIndexPath.section]]!.count {
+            items[categories[destinationIndexPath.section]]![i].index = Int16(i)
         }
         
-        if tasks[categories[sourceIndexPath.section]]!.count == 0 {
+        if items[categories[sourceIndexPath.section]]!.count == 0 {
             categories.remove(at: sourceIndexPath.section)
         } else if sourceIndexPath.section != destinationIndexPath.section {
-            for i in 0..<tasks[categories[sourceIndexPath.row]]!.count {
-                tasks[categories[sourceIndexPath.section]]![i].index = Int16(i)
+            for i in 0..<items[categories[sourceIndexPath.section]]!.count {
+                items[categories[sourceIndexPath.section]]![i].index = Int16(i)
             }
         }
         
@@ -101,7 +101,7 @@ extension TaskViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let num = tasks[categories[section]]?.count {
+        if let num = items[categories[section]]?.count {
             return num
         } else {
             return 0
@@ -110,10 +110,10 @@ extension TaskViewController : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
-        let task = tasks[categories[indexPath.section]]?[indexPath.row]
+        let task = items[categories[indexPath.section]]?[indexPath.row]
         cell.textLabel?.text = "[\(String(task?.index ?? 99))]\(task?.name ?? "")"
-        let pt = tasks[categories[indexPath.section]]?[indexPath.row].pt ?? 0
-        cell.detailTextLabel?.text = String(pt * Int32(currentRate))
+        let pt = items[categories[indexPath.section]]?[indexPath.row].pt ?? 0
+        cell.detailTextLabel?.text = String(pt * Int32(taskRate))
         return cell
     }
     
@@ -123,21 +123,18 @@ extension TaskViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let target = tasks[categories[indexPath.section]]![indexPath.row]
-            tasks[categories[indexPath.section]]!.remove(at: indexPath.row)
-            if tasks[categories[indexPath.section]]!.count == 0 {
-                tasks.removeValue(forKey: categories[indexPath.section])
+            let target = items[categories[indexPath.section]]![indexPath.row]
+            items[categories[indexPath.section]]!.remove(at: indexPath.row)
+            if items[categories[indexPath.section]]!.count == 0 {
+                items.removeValue(forKey: categories[indexPath.section])
                 categories.remove(at: indexPath.section)
-//                categories.sort()
             } else {
-                for i in 0..<tasks[categories[indexPath.section]]!.count{
-                    tasks[categories[indexPath.section]]![i].index = Int16(i)
+                for i in 0..<items[categories[indexPath.section]]!.count{
+                    items[categories[indexPath.section]]![i].index = Int16(i)
                 }
             }
             context.delete(target)
             try! context.save()
-            print(categories)
-            print(tasks)
             tableView.reloadData()
         }
     }
