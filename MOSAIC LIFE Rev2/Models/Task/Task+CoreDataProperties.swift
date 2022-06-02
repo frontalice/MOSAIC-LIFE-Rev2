@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  MOSAIC LIFE Rev2
 //
-//  Created by Toshiki Hanakawa on 2022/04/20.
+//  Created by Toshiki Hanakawa on 2022/05/15.
 //
 //
 
@@ -16,9 +16,10 @@ extension Task {
         return NSFetchRequest<Task>(entityName: "Task")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var category: String?
+    @NSManaged public var name: String?
     @NSManaged public var pt: Int32
+    @NSManaged public var index: Int16
 
 }
 

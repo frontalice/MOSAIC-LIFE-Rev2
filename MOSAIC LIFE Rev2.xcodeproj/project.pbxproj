@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A83EDBB128483902004D272F /* PickerViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83EDBB028483902004D272F /* PickerViewDelegates.swift */; };
 		A848E6F62811535B003FBE04 /* CommonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A848E6F52811535B003FBE04 /* CommonListViewController.swift */; };
+		A8A8573028312E4500BF8972 /* Shop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A8572C28312E4500BF8972 /* Shop+CoreDataClass.swift */; };
+		A8A8573128312E4500BF8972 /* Shop+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A8572D28312E4500BF8972 /* Shop+CoreDataProperties.swift */; };
+		A8A8573228312E4500BF8972 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A8572E28312E4500BF8972 /* Task+CoreDataClass.swift */; };
+		A8A8573328312E4500BF8972 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A8572F28312E4500BF8972 /* Task+CoreDataProperties.swift */; };
 		A8AC4C992811629500E162A2 /* ModelEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4C982811629500E162A2 /* ModelEnum.swift */; };
 		A8AC4CAF2812339500E162A2 /* PtLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC4CA82812339400E162A2 /* PtLabel.swift */; };
 		A8AC4CB02812339500E162A2 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AC4CA92812339400E162A2 /* MainView.xib */; };
@@ -30,18 +35,20 @@
 		A8BF5E68280FAE28008C3814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E67280FAE28008C3814 /* Assets.xcassets */; };
 		A8BF5E6B280FAE28008C3814 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8BF5E69280FAE28008C3814 /* LaunchScreen.storyboard */; };
 		A8BF5E8A280FAF12008C3814 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E86280FAF12008C3814 /* TaskViewController.swift */; };
-		A8BF5E8B280FAF12008C3814 /* TaskViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E87280FAF12008C3814 /* TaskViewController+Delegates.swift */; };
+		A8BF5E8B280FAF12008C3814 /* TableViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E87280FAF12008C3814 /* TableViewDelegates.swift */; };
 		A8BF5E8C280FAF12008C3814 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E89280FAF12008C3814 /* MainViewController.swift */; };
-		A8BF5EA3280FB8E7008C3814 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E9F280FB8E7008C3814 /* Task+CoreDataClass.swift */; };
-		A8BF5EA4280FB8E7008C3814 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EA0280FB8E7008C3814 /* Task+CoreDataProperties.swift */; };
-		A8BF5EA5280FB8E7008C3814 /* Shop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EA1280FB8E7008C3814 /* Shop+CoreDataClass.swift */; };
-		A8BF5EA6280FB8E7008C3814 /* Shop+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EA2280FB8E7008C3814 /* Shop+CoreDataProperties.swift */; };
 		A8BF5EAC280FB989008C3814 /* UDDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EAB280FB989008C3814 /* UDDataStore.swift */; };
 		A8BF5EB2280FE3EB008C3814 /* ViewController+CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A83EDBB028483902004D272F /* PickerViewDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegates.swift; sourceTree = "<group>"; };
 		A848E6F52811535B003FBE04 /* CommonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListViewController.swift; sourceTree = "<group>"; };
+		A8A8572B28312DBF00BF8972 /* MOSAIC_LIFE_Rev2_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MOSAIC_LIFE_Rev2_v2.xcdatamodel; sourceTree = "<group>"; };
+		A8A8572C28312E4500BF8972 /* Shop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A8A8572D28312E4500BF8972 /* Shop+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A8A8572E28312E4500BF8972 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A8A8572F28312E4500BF8972 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8AC4C982811629500E162A2 /* ModelEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnum.swift; sourceTree = "<group>"; };
 		A8AC4CA82812339400E162A2 /* PtLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PtLabel.swift; sourceTree = "<group>"; };
 		A8AC4CA92812339400E162A2 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
@@ -66,12 +73,8 @@
 		A8BF5E6A280FAE28008C3814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8BF5E6C280FAE28008C3814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8BF5E86280FAF12008C3814 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
-		A8BF5E87280FAF12008C3814 /* TaskViewController+Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskViewController+Delegates.swift"; sourceTree = "<group>"; };
+		A8BF5E87280FAF12008C3814 /* TableViewDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDelegates.swift; sourceTree = "<group>"; };
 		A8BF5E89280FAF12008C3814 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A8BF5E9F280FB8E7008C3814 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A8BF5EA0280FB8E7008C3814 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A8BF5EA1280FB8E7008C3814 /* Shop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A8BF5EA2280FB8E7008C3814 /* Shop+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shop+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A8BF5EAB280FB989008C3814 /* UDDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDDataStore.swift; sourceTree = "<group>"; };
 		A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CommonFunctions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,7 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				A8BF5E86280FAF12008C3814 /* TaskViewController.swift */,
-				A8BF5E87280FAF12008C3814 /* TaskViewController+Delegates.swift */,
+				A8BF5E87280FAF12008C3814 /* TableViewDelegates.swift */,
+				A83EDBB028483902004D272F /* PickerViewDelegates.swift */,
 			);
 			path = TaskView;
 			sourceTree = "<group>";
@@ -226,8 +230,8 @@
 		A8BF5EA9280FB91E008C3814 /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				A8BF5E9F280FB8E7008C3814 /* Task+CoreDataClass.swift */,
-				A8BF5EA0280FB8E7008C3814 /* Task+CoreDataProperties.swift */,
+				A8A8572E28312E4500BF8972 /* Task+CoreDataClass.swift */,
+				A8A8572F28312E4500BF8972 /* Task+CoreDataProperties.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -235,8 +239,8 @@
 		A8BF5EAA280FB923008C3814 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				A8BF5EA1280FB8E7008C3814 /* Shop+CoreDataClass.swift */,
-				A8BF5EA2280FB8E7008C3814 /* Shop+CoreDataProperties.swift */,
+				A8A8572C28312E4500BF8972 /* Shop+CoreDataClass.swift */,
+				A8A8572D28312E4500BF8972 /* Shop+CoreDataProperties.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -335,18 +339,19 @@
 				A8AC4CD32812A0C000E162A2 /* ShopViewController.swift in Sources */,
 				A8BF5E8A280FAF12008C3814 /* TaskViewController.swift in Sources */,
 				A8AC4CD52812A2D500E162A2 /* ShopViewController+Delegates.swift in Sources */,
+				A83EDBB128483902004D272F /* PickerViewDelegates.swift in Sources */,
 				A8AC4CB12812339500E162A2 /* MainView.swift in Sources */,
+				A8A8573228312E4500BF8972 /* Task+CoreDataClass.swift in Sources */,
 				A8BF5E66280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodeld in Sources */,
+				A8A8573128312E4500BF8972 /* Shop+CoreDataProperties.swift in Sources */,
 				A8AC4CD9281D199C00E162A2 /* ActivityLog.swift in Sources */,
-				A8BF5EA5280FB8E7008C3814 /* Shop+CoreDataClass.swift in Sources */,
-				A8BF5EA3280FB8E7008C3814 /* Task+CoreDataClass.swift in Sources */,
 				A8BF5E5E280FAE21008C3814 /* SceneDelegate.swift in Sources */,
 				A8BF5EB2280FE3EB008C3814 /* ViewController+CommonFunctions.swift in Sources */,
-				A8BF5EA6280FB8E7008C3814 /* Shop+CoreDataProperties.swift in Sources */,
-				A8BF5EA4280FB8E7008C3814 /* Task+CoreDataProperties.swift in Sources */,
+				A8A8573328312E4500BF8972 /* Task+CoreDataProperties.swift in Sources */,
 				A848E6F62811535B003FBE04 /* CommonListViewController.swift in Sources */,
-				A8BF5E8B280FAF12008C3814 /* TaskViewController+Delegates.swift in Sources */,
+				A8BF5E8B280FAF12008C3814 /* TableViewDelegates.swift in Sources */,
 				A8AC4CC62812347C00E162A2 /* XibLoadView.swift in Sources */,
+				A8A8573028312E4500BF8972 /* Shop+CoreDataClass.swift in Sources */,
 				A8BF5EAC280FB989008C3814 /* UDDataStore.swift in Sources */,
 				A8AC4CCA2812353100E162A2 /* ShopView.swift in Sources */,
 				A8AC4CAF2812339500E162A2 /* PtLabel.swift in Sources */,
@@ -578,9 +583,10 @@
 		A8BF5E64280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A8A8572B28312DBF00BF8972 /* MOSAIC_LIFE_Rev2_v2.xcdatamodel */,
 				A8BF5E65280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodel */,
 			);
-			currentVersion = A8BF5E65280FAE21008C3814 /* MOSAIC_LIFE_Rev2.xcdatamodel */;
+			currentVersion = A8A8572B28312DBF00BF8972 /* MOSAIC_LIFE_Rev2_v2.xcdatamodel */;
 			path = MOSAIC_LIFE_Rev2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

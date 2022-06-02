@@ -60,12 +60,12 @@ class MainViewController: UIViewController {
         } else {
             mainView.activityLog.loadText()
             mainView.activityLog.addPlaneText(
-                planeText: "ロード完了\n[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n"
+                planeText: "[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] ロード完了。 現在: \(String(currentPt))pts\n"
             )
         }
         
-        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        print(documentPath)
+//        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+//        print(documentPath)
         
         // View - frame
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -80,8 +80,6 @@ class MainViewController: UIViewController {
         mainView.exploreEffectButton.addTarget(self, action: #selector(exploreEffectButtonTapped(_:)), for: .touchUpInside)
         mainView.heartEffectButton.addTarget(self, action: #selector(heartEffectButtonTapped(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(writeLog(notification:)), name: .init(rawValue: "ACTIVITYLOG"), object: nil)
-        
-        print("現在時刻:\(DateManager.shared.fetchCurrentTime(type: .normal))")
     }
     
     override func viewWillAppear(_ animated: Bool) {

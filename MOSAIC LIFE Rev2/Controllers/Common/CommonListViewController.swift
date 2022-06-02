@@ -32,10 +32,13 @@ class CommonListViewController : UIViewController {
     var currentPt = 0
     var currentRate = 1
     
-//    public var context : NSManagedObjectContext!
-    
     var categoryOptions : [String] = []
+//    var categoryDictionary : [String:Int] = [:]
+    var categories : [String] = []
+    
     let newCategory = "新しいカテゴリを追加"
+    
+    // MARK: - LifeCycle Functions
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 //        context = nil
@@ -48,8 +51,6 @@ class CommonListViewController : UIViewController {
         listView = CommonListView()
         super.init(coder: coder)
     }
-    
-    // MARK: - LifeCycle Functions
     
     override func loadView() {
         view = listView
@@ -110,7 +111,6 @@ class CommonListViewController : UIViewController {
                 print("context not saved:\(error.localizedDescription)")
                 return false
             }
-            return true
         case .shop:
             let newRecord = Shop(context: context)
             newRecord.name = name
@@ -123,8 +123,9 @@ class CommonListViewController : UIViewController {
                 print("context not saved:\(error.localizedDescription)")
                 return false
             }
-            return true
         }
+        listView.listTable.reloadData()
+        return true
     }
     
     func insertCategoryHandler (alertController: UIAlertController, model: ModelEnum, context: NSManagedObjectContext!, name: String, pt: Int) -> ((UIAlertAction) -> Void) {
@@ -132,6 +133,7 @@ class CommonListViewController : UIViewController {
             if let category = alertController.textFields![0].text {
                 if !self.addNewRecord(model: model, context: context, name: name, pt: pt, category: category){
                     self.showAlert(message: "データベースへの追加に失敗しました。")
+                    return
                 }
                 self.listView.listTable.reloadData()
             } else {
