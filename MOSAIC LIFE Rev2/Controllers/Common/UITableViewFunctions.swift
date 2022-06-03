@@ -127,13 +127,16 @@ extension CommonListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
         let task = items[categories[indexPath.section]]?[indexPath.row]
-        cell.textLabel?.text = "[\(String(task?.index ?? 99))]\(task?.name ?? "")"
+        var content = cell.defaultContentConfiguration()
+        content.text = task?.name
+//        content.text = "[\(String(task?.index ?? 99))]\(task?.name ?? "")" // indexの変動を実機で確認したい場合
         let pt = items[categories[indexPath.section]]?[indexPath.row].pt ?? 0
         if items[categories[indexPath.section]]?[indexPath.row].type == "Task" {
-            cell.detailTextLabel?.text = String(pt * Int32(taskRate))
+            content.secondaryText = String(pt * Int32(taskRate))
         } else if items[categories[indexPath.section]]?[indexPath.row].type == "Shop"{
-            cell.detailTextLabel?.text = String(pt * Int32(shopRate * 10) / 10)
+            content.secondaryText = String(pt * Int32(shopRate * 10) / 10)
         }
+        cell.contentConfiguration = content
         return cell
     }
     

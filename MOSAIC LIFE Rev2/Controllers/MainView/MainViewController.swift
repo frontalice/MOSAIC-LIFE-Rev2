@@ -33,6 +33,7 @@ class MainViewController: UIViewController {
         
         // Delegates
         mainView.activityLog.delegate = self
+        mainView.addingSptLabel.delegate = self
         
         // ログイン処理
         if DateManager.shared.judgeIsDayChanged() {
@@ -75,6 +76,7 @@ class MainViewController: UIViewController {
         mainView.shopButton.addTarget(self, action: #selector(goToShop(_:)), for: .touchUpInside)
         mainView.currencyButton.addTarget(self, action: #selector(setSptOptions(_:)), for: .touchUpInside)
         mainView.currentSptLabel.addTarget(self, action: #selector(currentSptEdited(_:)), for: .editingDidEnd)
+        mainView.addingSptLabel.addTarget(self, action: #selector(addingSptBeforeEdit(_:)), for: .editingDidBegin)
         mainView.addingSptLabel.addTarget(self, action: #selector(addingSptEdited(_:)), for: .editingDidEnd)
         mainView.angerEffectButton.addTarget(self, action: #selector(angerEffectButtonTapped(_:)), for: .touchUpInside)
         mainView.exploreEffectButton.addTarget(self, action: #selector(exploreEffectButtonTapped(_:)), for: .touchUpInside)
@@ -165,6 +167,10 @@ class MainViewController: UIViewController {
         }
     }
     
+    @objc func addingSptBeforeEdit(_ sender: Any){
+        mainView.addingSptLabel.text = ""
+    }
+    
     @objc func addingSptEdited(_ sender: Any){
         if let spt = Int(mainView.addingSptLabel.text!){
             currentSpt += spt
@@ -195,7 +201,7 @@ class MainViewController: UIViewController {
         switch sptRank {
             case 5:
                 if sptCount > 2 {
-                    currentSpt = 15000 + (sptCount-1)/2 * 3000
+                    currentSpt = 15000 + (sptCount-2)/2 * 3000
                 } else {
                     currentSpt = 15000
                 }
@@ -218,7 +224,7 @@ class MainViewController: UIViewController {
         var overCounter = 0
         
         if      currentSpt >= 15000 {
-            overCounter = (currentSpt - 15000) / 3000
+            overCounter = (currentSpt - 15000) / 3000 * 2 // // Lv5時の残り日数-2
             tempRank = 5; moneyMultiplier = 5.0
         }
         else if currentSpt >= 12000 { tempRank = 4; moneyMultiplier = 4.0}
@@ -237,10 +243,15 @@ class MainViewController: UIViewController {
             userDefaults.set(.shopRate, moneyMultiplier)
             
             mainView.currencyButton.setTitle("x\(moneyMultiplier)", for: .normal)
+            return
         }
-        if overCounter >= 1 {
-            sptCount = 2 + overCounter
-            mainView.activityLog.addPlaneText(planeText: "日数カウントが増加しました: 残り\(sptCount)日\n")
+        // Lv5据え置きで日数のみ変動する場合のみ実行
+        if sptRank == 5 && overCounter >= 1 {
+            let overCount = 2 + overCounter
+            if sptCount != overCount {
+                sptCount = overCount
+                mainView.activityLog.addPlaneText(planeText: "日数カウントが変動しました: 残り\(sptCount)日\n")
+            }
         }
     }
     
@@ -362,6 +373,13 @@ class MainViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+}
+
+extension MainViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension MainViewController : UITextViewDelegate {
