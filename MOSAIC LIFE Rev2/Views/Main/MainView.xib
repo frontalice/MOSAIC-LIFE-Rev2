@@ -108,29 +108,29 @@
                             </constraints>
                         </stackView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Z21-0z-OyJ" customClass="ActivityLog" customModule="MOSAIC_LIFE_Rev2" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="202" width="382" height="456"/>
+                            <rect key="frame" x="0.0" y="202" width="382" height="452"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-I1-Dmb">
-                            <rect key="frame" x="0.0" y="673" width="382" height="34"/>
+                            <rect key="frame" x="0.0" y="669" width="382" height="38"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="260" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ba-Eg-3V3">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="38"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="coloncurrencysign.circle" catalog="system" title="x1.0">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     </buttonConfiguration>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RfZ-8Y-KeY">
-                                    <rect key="frame" x="80" y="0.0" width="136" height="34"/>
+                                    <rect key="frame" x="80" y="0.0" width="136" height="38"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="←" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNj-FF-mLT">
-                                    <rect key="frame" x="216" y="0.0" width="30" height="34"/>
+                                    <rect key="frame" x="216" y="0.0" width="30" height="38"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="T6S-3y-v3V"/>
                                     </constraints>
@@ -139,7 +139,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="add..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMR-yr-aVI">
-                                    <rect key="frame" x="246" y="0.0" width="136" height="34"/>
+                                    <rect key="frame" x="246" y="0.0" width="136" height="38"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 </textField>
@@ -147,6 +147,7 @@
                             <constraints>
                                 <constraint firstItem="pMR-yr-aVI" firstAttribute="width" secondItem="RfZ-8Y-KeY" secondAttribute="width" id="oVR-hf-CSD"/>
                             </constraints>
+                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mZT-5o-WHs">
                             <rect key="frame" x="0.0" y="722" width="382" height="80"/>

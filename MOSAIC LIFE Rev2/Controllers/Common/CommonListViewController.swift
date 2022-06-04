@@ -33,9 +33,10 @@ class CommonListViewController : UIViewController {
     
     lazy var userDefaults : UDDataStore = UDDataStore()
     
-    var currentPt = 0
+    lazy var currentPt = userDefaults.fetchInt(key: .currentPt) { didSet { userDefaults.set(.currentPt, currentPt) } }
     lazy var taskRate = userDefaults.fetchInt(key: .taskRate)
     lazy var shopRate = userDefaults.fetchDouble(key: .shopRate)
+    lazy var isChecked = userDefaults.fetchBoolean(key: .rateOption) {didSet {userDefaults.set(.rateOption, isChecked)}}
     
     // MARK: - LifeCycle Functions
     

@@ -16,6 +16,7 @@ public final class ShopView: CommonListView {
         listTable = shopListView
         pointLabel = ptLabel
         rateLabel = shopRateLabel
+        checkBox = checkButton
         if #available(iOS 15, *) {
             listTable.sectionHeaderTopPadding = 0.0
         }
@@ -28,4 +29,5 @@ public final class ShopView: CommonListView {
     @IBOutlet public weak var shopListView: UITableView!
     @IBOutlet public weak var ptLabel: UILabel!
     @IBOutlet public weak var shopRateLabel: UILabel!
+    @IBOutlet public weak var checkButton: UIButton!
 }

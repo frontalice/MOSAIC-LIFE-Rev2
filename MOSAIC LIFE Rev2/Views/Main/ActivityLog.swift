@@ -38,7 +38,7 @@ public class ActivityLog : UITextView {
                     return
                 }
                 
-                let createDate = "\(DateManager.shared.fetchCurrentTime(type: .year))\(DateManager.shared.fetchCurrentTime(type: .month))\(DateManager.shared.fetchCurrentTime(type: .day))"
+                let createDate = DateManager.shared.fetchCurrentTime(type: .yesterday)
                 let fileURL = dirURL.appendingPathComponent("\(createDate).txt")
                 FileManager.default.createFile(atPath: fileURL.path, contents: logText.string.data(using: .utf8))
                 

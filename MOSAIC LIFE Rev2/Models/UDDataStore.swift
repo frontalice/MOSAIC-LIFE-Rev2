@@ -18,6 +18,7 @@ public struct UDDataStore {
         case ptPerHour = "POINTS_PER_HOUR"
         case taskRate = "TASK_RATE"
         case shopRate = "SHOP_RATE"
+        case rateOption = "RATE_OPTION"
         // Date
         case dateBorder = "DATEBORDER"
         case lastHour = "LAST_HOUR"
@@ -40,6 +41,7 @@ public struct UDDataStore {
             Key.ptPerHour.rawValue : 0,
             Key.taskRate.rawValue : 1,
             Key.shopRate.rawValue : 1,
+            Key.rateOption.rawValue : true,
             // Date
             Key.dateBorder.rawValue : Calendar(identifier: .gregorian).date(from: DateComponents(year: 2022, month: 4, day: 1))!,
             Key.lastHour.rawValue : 4,
@@ -72,6 +74,10 @@ public struct UDDataStore {
     
     public func fetchDouble (key: Key) -> Double {
         return userDefaults.double(forKey: key.rawValue)
+    }
+    
+    public func fetchBoolean (key: Key) -> Bool {
+        return userDefaults.bool(forKey: key.rawValue)
     }
     
 }

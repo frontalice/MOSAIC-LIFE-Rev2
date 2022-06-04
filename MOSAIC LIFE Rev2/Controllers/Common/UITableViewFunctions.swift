@@ -26,13 +26,14 @@ extension CommonListViewController : UITableViewDelegate {
                     "Type":"Task"
                 ])
             } else if items[categories[indexPath.section]]![indexPath.row].type == "Shop" {
-                if currentPt < pt * Int(shopRate * 10) / 10 {
+                let consumePt = isChecked ? pt * Int(shopRate * 10) / 10 : pt
+                if currentPt < consumePt {
                     return
                 }
-                currentPt -= pt * Int(shopRate * 10) / 10
+                currentPt -= consumePt
                 NotificationCenter.default.post(name: .init(rawValue: "ACTIVITYLOG"), object: nil, userInfo: [
                     "Name":sourceName,
-                    "Point":pt * Int(shopRate * 10) / 10,
+                    "Point":consumePt,
                     "ObtainedPoint":0,
                     "Type":"Shop"
                 ])
@@ -41,7 +42,6 @@ extension CommonListViewController : UITableViewDelegate {
             }
             tableView.deselectRow(at: indexPath, animated: false)
             listView.pointLabel.text = String("\(currentPt) pt")
-            userDefaults.set(.currentPt, currentPt)
         } else {
             let alertController = getAlertController(title: "Itemの編集", message: "" , fields: 2, placeHolder: ["Item Name","Point"])
             alertController.textFields![0].text = sourceName
@@ -134,7 +134,11 @@ extension CommonListViewController : UITableViewDataSource {
         if items[categories[indexPath.section]]?[indexPath.row].type == "Task" {
             content.secondaryText = String(pt * Int32(taskRate))
         } else if items[categories[indexPath.section]]?[indexPath.row].type == "Shop"{
-            content.secondaryText = String(pt * Int32(shopRate * 10) / 10)
+            if isChecked {
+                content.secondaryText = String(pt * Int32(shopRate * 10) / 10)
+            } else {
+                content.secondaryAttributedText = NSAttributedString(string: String(pt), attributes: [.foregroundColor : UIColor.cyan])
+            }
         }
         cell.contentConfiguration = content
         return cell

@@ -21,6 +21,8 @@ class DateManager {
         format = DateFormatter()
         format.locale = Locale(identifier: "ja_JP")
         format.timeZone = TimeZone(identifier:  "Asia/Tokyo")
+        format.calendar = calendar
+        format.dateFormat = "yyyy年M月d日 H時m分s秒"
     }
     
     public func fetchCurrentTime(type: TimeType) -> String {
@@ -28,29 +30,12 @@ class DateManager {
         switch type {
         case .normal:
             return format.string(from: japanCurrentTime)
-        case .year:
+        default:
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y", options: 0, locale: Locale(identifier: "ja_JP"))
-            return dateFormatter.string(from: now)
-        case .yearAndMonthAndDay:
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMdd", options: 0, locale: Locale(identifier: "ja_JP"))
-            return dateFormatter.string(from: now)
-        case .month:
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM", options: 0, locale: Locale(identifier: "ja_JP"))
-            return dateFormatter.string(from: now)
-        case .day:
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dd", options: 0, locale: Locale(identifier: "ja_JP"))
-            return dateFormatter.string(from: now)
-        case .hour:
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "H"
-            return dateFormatter.string(from: now)
-        case .hourAndMinute:
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "HHmm", options: 0, locale: Locale(identifier: "ja_JP"))
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: type.rawValue, options: 0, locale: Locale(identifier: "ja_JP"))
+            if type == .yesterday {
+                return dateFormatter.string(from: Date(timeIntervalSinceNow: -60*60*24))
+            } 
             return dateFormatter.string(from: now)
         }
     }
@@ -59,13 +44,13 @@ class DateManager {
         let tomorrow = calendar.date(byAdding: .day, value: 1, to: japanCurrentTime)!
         let border = calendar.date(bySettingHour: 4, minute: 0, second: 0, of: tomorrow)!
         userDefaults.set(.dateBorder, border)
-        print("DateManager: 日付変更線を\(border)で設定")
+        print("DateManager: 日付変更線を\(format.string(from: border))で設定")
         return border
     }
     
     public func judgeIsDayChanged() -> Bool {
-        print("judge/現在時刻:\(now)")
-        print("judge/更新時間:\(dateBorder)")
+        print("judge/現在時刻:\(format.string(from: now))")
+        print("judge/更新時間:\(format.string(from: dateBorder))")
         if now > dateBorder {
             dateBorder = reloadDateBorder()
             return true
@@ -75,12 +60,13 @@ class DateManager {
     }
 }
 
-public enum TimeType {
-    case normal
-    case year
-    case yearAndMonthAndDay
-    case month
-    case day
-    case hour
-    case hourAndMinute
+public enum TimeType : String {
+    case normal = "yyyy年M月d日 H時m分s秒"
+    case yesterday = "yyyy年M月d日"
+    case year = "y"
+    case yearAndMonthAndDay = "yMMdd"
+    case month = "MM"
+    case day = "dd"
+    case hour = "H"
+    case hourAndMinute = "HHmm"
 }
