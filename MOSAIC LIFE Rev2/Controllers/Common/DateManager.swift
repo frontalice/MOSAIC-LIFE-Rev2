@@ -26,18 +26,20 @@ class DateManager {
     }
     
     public func fetchCurrentTime(type: TimeType) -> String {
-        now = Date()
+        var date = Date()
+        let dateFormatter = DateFormatter()
         switch type {
         case .normal:
             return format.string(from: japanCurrentTime)
+        case .hour:
+            dateFormatter.dateFormat = "H"
         default:
-            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: type.rawValue, options: 0, locale: Locale(identifier: "ja_JP"))
             if type == .yesterday {
-                return dateFormatter.string(from: Date(timeIntervalSinceNow: -60*60*24))
-            } 
-            return dateFormatter.string(from: now)
+                date = Date(timeIntervalSinceNow: -60*60*24)
+            }
         }
+        return dateFormatter.string(from: date)
     }
     
     public func reloadDateBorder() -> Date {
