@@ -36,7 +36,18 @@
 		A8BF5E8C280FAF12008C3814 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5E89280FAF12008C3814 /* MainViewController.swift */; };
 		A8BF5EAC280FB989008C3814 /* UDDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EAB280FB989008C3814 /* UDDataStore.swift */; };
 		A8BF5EB2280FE3EB008C3814 /* ViewController+CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */; };
+		A8EF3339284DCA0D00BEC69D /* MOSAIC_LIFE_Rev2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF3338284DCA0D00BEC69D /* MOSAIC_LIFE_Rev2Tests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8EF333A284DCA0D00BEC69D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8BF5E50280FAE21008C3814 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8BF5E57280FAE21008C3814;
+			remoteInfo = "MOSAIC LIFE Rev2";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A81D3FFE28490220001945EF /* UITableViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewFunctions.swift; sourceTree = "<group>"; };
@@ -72,10 +83,19 @@
 		A8BF5E89280FAF12008C3814 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A8BF5EAB280FB989008C3814 /* UDDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDDataStore.swift; sourceTree = "<group>"; };
 		A8BF5EB1280FE3EB008C3814 /* ViewController+CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CommonFunctions.swift"; sourceTree = "<group>"; };
+		A8EF3336284DCA0C00BEC69D /* MOSAIC LIFE Rev2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MOSAIC LIFE Rev2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8EF3338284DCA0D00BEC69D /* MOSAIC_LIFE_Rev2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOSAIC_LIFE_Rev2Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A8BF5E55280FAE21008C3814 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8EF3333284DCA0C00BEC69D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -149,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BF5E5A280FAE21008C3814 /* MOSAIC LIFE Rev2 */,
+				A8EF3337284DCA0D00BEC69D /* MOSAIC LIFE Rev2Tests */,
 				A8BF5E59280FAE21008C3814 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BF5E58280FAE21008C3814 /* MOSAIC LIFE Rev2.app */,
+				A8EF3336284DCA0C00BEC69D /* MOSAIC LIFE Rev2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +261,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		A8EF3337284DCA0D00BEC69D /* MOSAIC LIFE Rev2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A8EF3338284DCA0D00BEC69D /* MOSAIC_LIFE_Rev2Tests.swift */,
+			);
+			path = "MOSAIC LIFE Rev2Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,6 +289,24 @@
 			productReference = A8BF5E58280FAE21008C3814 /* MOSAIC LIFE Rev2.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A8EF3335284DCA0C00BEC69D /* MOSAIC LIFE Rev2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8EF333C284DCA0D00BEC69D /* Build configuration list for PBXNativeTarget "MOSAIC LIFE Rev2Tests" */;
+			buildPhases = (
+				A8EF3332284DCA0C00BEC69D /* Sources */,
+				A8EF3333284DCA0C00BEC69D /* Frameworks */,
+				A8EF3334284DCA0C00BEC69D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8EF333B284DCA0D00BEC69D /* PBXTargetDependency */,
+			);
+			name = "MOSAIC LIFE Rev2Tests";
+			productName = "MOSAIC LIFE Rev2Tests";
+			productReference = A8EF3336284DCA0C00BEC69D /* MOSAIC LIFE Rev2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -266,11 +314,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					A8BF5E57280FAE21008C3814 = {
 						CreatedOnToolsVersion = 13.3.1;
+					};
+					A8EF3335284DCA0C00BEC69D = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = A8BF5E57280FAE21008C3814;
 					};
 				};
 			};
@@ -288,6 +340,7 @@
 			projectRoot = "";
 			targets = (
 				A8BF5E57280FAE21008C3814 /* MOSAIC LIFE Rev2 */,
+				A8EF3335284DCA0C00BEC69D /* MOSAIC LIFE Rev2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,6 +357,13 @@
 				A8BF5E63280FAE21008C3814 /* Main.storyboard in Resources */,
 				A8AC4CB02812339500E162A2 /* MainView.xib in Resources */,
 				A8AC4CB32812339500E162A2 /* TaskView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8EF3334284DCA0C00BEC69D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +399,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8EF3332284DCA0C00BEC69D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8EF3339284DCA0D00BEC69D /* MOSAIC_LIFE_Rev2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8EF333B284DCA0D00BEC69D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8BF5E57280FAE21008C3814 /* MOSAIC LIFE Rev2 */;
+			targetProxy = A8EF333A284DCA0D00BEC69D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A8BF5E61280FAE21008C3814 /* Main.storyboard */ = {
@@ -537,6 +613,44 @@
 			};
 			name = Release;
 		};
+		A8EF333D284DCA0D00BEC69D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q9SQBB7T47;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "MOSAIC-Lab.MOSAIC-LIFE-Rev2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MOSAIC LIFE Rev2.app/MOSAIC LIFE Rev2";
+			};
+			name = Debug;
+		};
+		A8EF333E284DCA0D00BEC69D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q9SQBB7T47;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "MOSAIC-Lab.MOSAIC-LIFE-Rev2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MOSAIC LIFE Rev2.app/MOSAIC LIFE Rev2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -554,6 +668,15 @@
 			buildConfigurations = (
 				A8BF5E70280FAE28008C3814 /* Debug */,
 				A8BF5E71280FAE28008C3814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8EF333C284DCA0D00BEC69D /* Build configuration list for PBXNativeTarget "MOSAIC LIFE Rev2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8EF333D284DCA0D00BEC69D /* Debug */,
+				A8EF333E284DCA0D00BEC69D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

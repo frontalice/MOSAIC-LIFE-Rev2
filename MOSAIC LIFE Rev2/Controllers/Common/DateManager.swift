@@ -29,13 +29,13 @@ class DateManager {
         switch type {
         case .normal:
             return format.string(from: japanCurrentTime)
+        case .yesterday:
+            dateFormatter.dateFormat = type.rawValue
+            date = Date(timeIntervalSinceNow: -60*60*24)
         case .hour:
             dateFormatter.dateFormat = "H"
         default:
             dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: type.rawValue, options: 0, locale: Locale(identifier: "ja_JP"))
-            if type == .yesterday {
-                date = Date(timeIntervalSinceNow: -60*60*24)
-            }
         }
         return dateFormatter.string(from: date)
     }

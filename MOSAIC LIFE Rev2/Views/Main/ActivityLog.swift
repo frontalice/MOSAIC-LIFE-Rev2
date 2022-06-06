@@ -39,6 +39,7 @@ public class ActivityLog : UITextView {
                 let createDate = DateManager.shared.getCurrentTimeString(type: .yesterday)
                 let fileURL = dirURL.appendingPathComponent("\(createDate).txt")
                 FileManager.default.createFile(atPath: fileURL.path, contents: logText.string.data(using: .utf8))
+                print("FileCreated: \(createDate).txt")
                 
                 // 古いファイルを消去
                 if let files = try? FileManager.default.contentsOfDirectory(atPath: dirURL.path) {

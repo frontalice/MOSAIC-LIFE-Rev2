@@ -7,7 +7,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    private lazy var mainView = MainView()
+    lazy var mainView = MainView()
     
     let userDefaults : UDDataStore = UDDataStore()
     
