@@ -2,8 +2,6 @@
 //  MainView.swift
 //  Views
 //
-//  Created by Toshiki Hanakawa on 2022/04/18.
-//
 
 import UIKit
 

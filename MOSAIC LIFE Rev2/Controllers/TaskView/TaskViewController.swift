@@ -2,8 +2,6 @@
 //  TaskViewController.swift
 //  MOSAIC LIFE Rev.
 //
-//  Created by Toshiki Hanakawa on 2022/04/19.
-//
 
 import UIKit
 import CoreData

@@ -2,8 +2,6 @@
 //  DateManager.swift
 //  MOSAIC LIFE Rev2
 //
-//  Created by Toshiki Hanakawa on 2022/04/25.
-//
 
 import Foundation
 
@@ -25,7 +23,7 @@ class DateManager {
         format.dateFormat = "yyyy年M月d日 H時m分s秒"
     }
     
-    public func fetchCurrentTime(type: TimeType) -> String {
+    public func getCurrentTimeString(type: TimeType) -> String {
         var date = Date()
         let dateFormatter = DateFormatter()
         switch type {

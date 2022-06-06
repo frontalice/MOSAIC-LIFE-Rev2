@@ -2,8 +2,6 @@
 //  ActivityLog.swift
 //  MOSAIC LIFE Rev2
 //
-//  Created by Toshiki Hanakawa on 2022/04/30.
-//
 
 import UIKit
 
@@ -38,7 +36,7 @@ public class ActivityLog : UITextView {
                     return
                 }
                 
-                let createDate = DateManager.shared.fetchCurrentTime(type: .yesterday)
+                let createDate = DateManager.shared.getCurrentTimeString(type: .yesterday)
                 let fileURL = dirURL.appendingPathComponent("\(createDate).txt")
                 FileManager.default.createFile(atPath: fileURL.path, contents: logText.string.data(using: .utf8))
                 

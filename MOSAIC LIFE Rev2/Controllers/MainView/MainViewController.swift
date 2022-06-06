@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  MOSAIC LIFE Rev.
 //
-//  Created by Toshiki Hanakawa on 2022/04/18.
-//
 
 import UIKit
 
@@ -50,7 +48,7 @@ class MainViewController: UIViewController {
             // ログイン処理-3: ログ初期化
             mainView.activityLog.attributedText = NSMutableAttributedString(
                 string: "日付が更新されました。\n" +
-                        "[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n" +
+                        "[\(DateManager.shared.getCurrentTimeString(type: .hourAndMinute))] 現在: \(String(currentPt))pts\n" +
                         "補正レベル: Lv\(sptRank) / 残り\(sptCount)日\n" +
                         "----------------------------------------------------\n"
             )
@@ -61,7 +59,7 @@ class MainViewController: UIViewController {
         } else {
             mainView.activityLog.loadText()
             mainView.activityLog.addPlaneText(
-                planeText: "[\(DateManager.shared.fetchCurrentTime(type: .hourAndMinute))] ロード完了。 現在: \(String(currentPt))pts\n"
+                planeText: "[\(DateManager.shared.getCurrentTimeString(type: .hourAndMinute))] ロード完了。 現在: \(String(currentPt))pts\n"
             )
         }
         
@@ -148,6 +146,10 @@ class MainViewController: UIViewController {
                         self.sptCount = 2
                     }
                     self.sptCount = count
+                    self.mainView.activityLog.addPlaneText(
+                        planeText: "[\(DateManager.shared.getCurrentTimeString(type: .hourAndMinute))] " +
+                                    "補正レベル: Lv\(self.sptRank) / 残り\(self.sptCount)日\n"
+                    )
                     self.resetSpt()
                 } else {
                     self.showAlert(message: "不正な入力値です。")
@@ -256,14 +258,14 @@ class MainViewController: UIViewController {
     }
     
     @objc func writeLog(notification: NSNotification?) {
-        let timeString = DateManager.shared.fetchCurrentTime(type: .hourAndMinute)
+        let timeString = DateManager.shared.getCurrentTimeString(type: .hourAndMinute)
         let name = notification?.userInfo!["Name"] as? String ?? ""
         let point = notification?.userInfo!["Point"] as? Int ?? 0
         let obtainedPoint = notification?.userInfo!["ObtainedPoint"] as? Int ?? 0
         let modeType = notification?.userInfo!["Type"] as! String
         
         let presentHour = { () -> Int in
-            var hour = Int(DateManager.shared.fetchCurrentTime(type: .hour))!
+            var hour = Int(DateManager.shared.getCurrentTimeString(type: .hour))!
             if hour < 4 {
                 switch hour {
                     case 0: hour = 24
